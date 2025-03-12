@@ -166,8 +166,22 @@ function App() {
       preview: {
         description: 'We bring your projects to life with custom solutions: graphic design, web design, video editing, and more. Fill out the form to submit your request!'
       }
-    }
-  ];
+    },
+    {
+      title: "7 jours hors écran",
+      description: "Un guide incroyable",
+      image: "/assets/7j-hors-ecrans-couverture-en-3d.jpg", // Si image locale dans public/assets/
+      // OU image: "https://drive.google.com/uc?export=view&id=ABC123" si Google Drive (remplace ABC123 par l’ID du lien)
+      price: 5,
+      format: "PDF",
+      category: "ebooks",
+      preview: {
+        description: "Un e-book pour apprendre que vous puissiez deconnécter de l'ecran en 7jours.",
+        chapters: ["Chapitre 1 : Début", "Chapitre 2 : Milieu", "Chapitre 3 : Fin"],
+        sample: "Chapitre 1 : Voici le début de mon aventure..."
+               }
+      },
+    ];
 
   const filteredProducts = activeCategory === 'all' 
     ? products 
