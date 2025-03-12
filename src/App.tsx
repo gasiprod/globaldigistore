@@ -407,7 +407,7 @@ function App() {
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto text-center text-white relative z-10">
             <h1 className="text-5xl md:text-6xl font-extrabold mb-6 bg-gradient-to-r from-purple-200 to-orange-200 bg-clip-text text-transparent leading-tight tracking-tight drop-shadow-xl">
-              Explore the Future of Digital Products
+            Discover My Creations
             </h1>
             <p className="text-xl md:text-2xl mb-10 font-light text-white drop-shadow-xl">Innovative resources for creators and entrepreneurs</p>
             <div className="flex md:flex-row flex-col justify-center gap-6">
