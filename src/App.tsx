@@ -8,6 +8,7 @@ function App() {
   const [showPreviewModal, setShowPreviewModal] = useState(false);
   const [showCartModal, setShowCartModal] = useState(false);
   const [showPaymentForm, setShowPaymentForm] = useState(false);
+  const [showPaymentInstructions, setShowPaymentInstructions] = useState<string | null>(null);
   const [selectedProduct, setSelectedProduct] = useState<any>(null);
   const [activeCategory, setActiveCategory] = useState('all');
   const [customServiceForm, setCustomServiceForm] = useState({
@@ -17,14 +18,13 @@ function App() {
     method: 'skrill',
     fullName: '',
     deliveryEmail: '',
-    skrillEmail: '',
-    phoneNumber: '',
-    paymentReference: '',
-    mtcn: ''
+    paymentEmail: '',
   });
   const [scrollPosition, setScrollPosition] = useState(0);
   const [cart, setCart] = useState<any[]>([]);
+  const [lastOrder, setLastOrder] = useState<{ items: any[]; total: number; paymentDetails: string } | null>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [imageIndex, setImageIndex] = useState(0); // Ajouté pour le carrousel
 
   useEffect(() => {
     emailjs.init("E-PnNwTaKX0lZR5hO");
@@ -67,7 +67,7 @@ function App() {
     {
       title: 'Beginner Yoga Guide',
       description: 'Start your journey to wellness',
-      image: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80&w=400',
+      image: "/assets/master-IA-prnpcl.png",
       price: 7,
       format: 'PDF',
       category: 'ebooks',
@@ -81,6 +81,33 @@ function App() {
           'Training Plan'
         ],
         sample: `Chapter 1: Introduction to Yoga\nYoga is a millennia-old practice...`
+      }
+    },
+    {
+      title: "7 jours hors écran",
+      description:"7 jours pour décrocher et respirer enfin !",
+      image: "/assets/7j-hors-ecran-prnpcl.png",
+      price: 5,
+      format: "PDF",
+      category: "ebooks",
+      preview: {
+        description: "Déconnecte-toi des écrans et reconnecte-toi à toi-même en seulement 7 jours ! Ce guide pratique te propose un défi quotidien simple et efficace pour retrouver calme, focus et énergie, sans renoncer totalement à ton smartphone. Testé et approuvé, il va transformer ta relation aux écrans — et ta vie !",
+        chapters: [
+          "Introduction : Pourquoi décrocher ?",
+          "Avant de commencer : Les écrans et nous",
+          "Jour 1 : Matin sans scroll",
+          "Jour 2 : Une heure analogique",
+          "Jour 3 : Repas déconnecté",
+          "Jour 4 : Pause nature",
+          "Jour 5 : Mono-tâche",
+          "Jour 6 : Grand ménage numérique",
+          "Jour 7 : Journée hors écran",
+          "Conclusion : Et après ?"
+        ],
+        sample: "Tu te réveilles, et bam, ton téléphone est déjà dans ta main. Un scroll, un mail, une vidéo… et une heure disparaît. Ça te parle ? Moi aussi, j’étais accro. Jusqu’à ce que je dise stop — pas un stop radical, juste un pas de côté. Ce guide, c’est ma méthode : 7 jours, 7 défis simples pour lâcher les écrans sans paniquer. Jour 1 : pas de scroll le matin. Ça semble facile ? Attends de voir comme ça change tout. Prêt à essayer ?",
+        coverImage: "/assets/7j-hors-ecran-cover.png",
+        contentPreviewImage: "/assets/7j-hors-ecran-content.png",
+        goalImage: "/assets/7j-hors-ecran-goal.png",
       }
     },
     {
@@ -167,21 +194,8 @@ function App() {
         description: 'We bring your projects to life with custom solutions: graphic design, web design, video editing, and more. Fill out the form to submit your request!'
       }
     },
-    {
-      title: "7 jours hors écran",
-      description: "Un guide incroyable",
-      image: "/assets/7j-hors-ecrans-couverture-en-3d.jpg", // Si image locale dans public/assets/
-      // OU image: "https://drive.google.com/uc?export=view&id=ABC123" si Google Drive (remplace ABC123 par l’ID du lien)
-      price: 5,
-      format: "PDF",
-      category: "ebooks",
-      preview: {
-        description: "Un e-book pour apprendre que vous puissiez deconnécter de l'ecran en 7jours.",
-        chapters: ["Chapitre 1 : Début", "Chapitre 2 : Milieu", "Chapitre 3 : Fin"],
-        sample: "Chapitre 1 : Voici le début de mon aventure..."
-               }
-      },
-    ];
+   
+  ];
 
   const filteredProducts = activeCategory === 'all' 
     ? products 
@@ -209,6 +223,7 @@ function App() {
   const handlePreview = (product: any) => {
     setSelectedProduct(product);
     setShowPreviewModal(true);
+    setImageIndex(0); // Réinitialise l’index du carrousel à 0 à chaque ouverture
   };
 
   const addToCart = (product: any) => {
@@ -278,39 +293,52 @@ function App() {
     const total = cart.reduce((sum, item) => sum + (typeof item.price === 'number' ? item.price : 0), 0);
     const cartDetails = cart.map(item => `${item.title} - $${item.price}`).join('\n');
     let paymentDetails = '';
+    let instructions = '';
 
     switch (paymentForm.method) {
+      case 'neteller':
+        paymentDetails = `Method: Neteller
+          Client Full Name: ${paymentForm.fullName}
+          Client Neteller Email: ${paymentForm.paymentEmail}
+          Delivery Email: ${paymentForm.deliveryEmail}`;
+        instructions = `Send $${total} to Neteller account: **rabemanantsaina.tiavina@gmail.com**\nInclude your delivery email (${paymentForm.deliveryEmail}) in the payment note for reference.`;
+        break;
       case 'skrill':
         paymentDetails = `Method: Skrill
           Client Full Name: ${paymentForm.fullName}
-          Client Skrill Email: ${paymentForm.skrillEmail}
-          Delivery Email: ${paymentForm.deliveryEmail}
-          Instructions: Send $${total} to rabemanantsaina.tiavina@gmail.com via Skrill.`;
+          Client Skrill Email: ${paymentForm.paymentEmail}
+          Delivery Email: ${paymentForm.deliveryEmail}`;
+        instructions = `Send $${total} to Skrill account: **Rabemanantsaina.tiavina@gmail.com**\nInclude your delivery email (${paymentForm.deliveryEmail}) in the payment note for reference.`;
         break;
-      case 'orange-money':
-        paymentDetails = `Method: Orange Money
+      case 'payeer':
+        paymentDetails = `Method: Payeer
           Client Full Name: ${paymentForm.fullName}
-          Client Phone Number: ${paymentForm.phoneNumber}
-          Payment Reference: ${paymentForm.paymentReference || 'Not provided'}
-          Delivery Email: ${paymentForm.deliveryEmail}
-          Instructions: Send $${total} (or equivalent in Ariary) to +261 32 21 312 46 (Rabemanantsaina Tiavina Severin) via Orange Money.`;
+          Client Payeer Email: ${paymentForm.paymentEmail}
+          Delivery Email: ${paymentForm.deliveryEmail}`;
+        instructions = `Send $${total} to Payeer account: **P1129706318**\nInclude your delivery email (${paymentForm.deliveryEmail}) in the payment note for reference.`;
         break;
-      case 'mvola':
-        paymentDetails = `Method: MVola
+      case 'wise':
+        paymentDetails = `Method: Wise
           Client Full Name: ${paymentForm.fullName}
-          Client Phone Number: ${paymentForm.phoneNumber}
-          Payment Reference: ${paymentForm.paymentReference || 'Not provided'}
-          Delivery Email: ${paymentForm.deliveryEmail}
-          Instructions: Send $${total} (or equivalent in Ariary) to +261 38 70 539 65 (Rabemanantsaina Tiavina Severin) via MVola.`;
-        break;
-      case 'western-union':
-        paymentDetails = `Method: Western Union
-          Client Full Name: ${paymentForm.fullName}
-          MTCN (if available): ${paymentForm.mtcn || 'Not provided yet'}
-          Delivery Email: ${paymentForm.deliveryEmail}
-          Instructions: Send $${total} to Rabemanantsaina Tiavina Severin, Madagascar via Western Union. Provide the MTCN after payment.`;
+          Delivery Email: ${paymentForm.deliveryEmail}`;
+        instructions = `Send $${total} to Wise account: **rabemanantsaina.tiavina@gmail.com**\nInclude your delivery email (${paymentForm.deliveryEmail}) in the payment note for reference.`;
         break;
     }
+
+    setLastOrder({ items: [...cart], total, paymentDetails });
+    setShowPaymentInstructions(instructions);
+    setShowPaymentForm(false);
+    setShowCartModal(false);
+    setCart([]);
+    setIsLoading(false);
+  };
+
+  const handlePaymentConfirmation = () => {
+    if (!lastOrder) return;
+
+    const total = lastOrder.total;
+    const cartDetails = lastOrder.items.map(item => `${item.title} - $${item.price}`).join('\n');
+    const paymentDetails = lastOrder.paymentDetails;
 
     emailjs.send("service_vuymlea", "template_xxzljle", {
       from_name: 'Client - Payment',
@@ -323,16 +351,12 @@ function App() {
         ${paymentDetails}`
     })
     .then(() => {
-      alert(`Payment request submitted! Please send $${total} via ${paymentForm.method.replace('-', ' ')} as instructed. Your products will be sent to ${paymentForm.deliveryEmail} after payment confirmation.`);
-      setCart([]);
-      setPaymentForm({ method: 'skrill', fullName: '', deliveryEmail: '', skrillEmail: '', phoneNumber: '', paymentReference: '', mtcn: '' });
-      setShowPaymentForm(false);
-      setShowCartModal(false);
-      setIsLoading(false);
+      alert("Payment confirmation sent! We’ll verify it soon.");
+      setShowPaymentInstructions(null);
+      setPaymentForm({ method: 'skrill', fullName: '', deliveryEmail: '', paymentEmail: '' });
     })
     .catch((err) => {
-      alert("Error: " + err.text);
-      setIsLoading(false);
+      alert("Error sending confirmation: " + err.text);
     });
   };
 
@@ -421,7 +445,7 @@ function App() {
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto text-center text-white relative z-10">
             <h1 className="text-5xl md:text-6xl font-extrabold mb-6 bg-gradient-to-r from-purple-200 to-orange-200 bg-clip-text text-transparent leading-tight tracking-tight drop-shadow-xl">
-            Discover My Creations
+              Discover My Creations
             </h1>
             <p className="text-xl md:text-2xl mb-10 font-light text-white drop-shadow-xl">Innovative resources for creators and entrepreneurs</p>
             <div className="flex md:flex-row flex-col justify-center gap-6">
@@ -526,7 +550,7 @@ function App() {
                         {product.price !== 'On Request' && (
                           <button 
                             onClick={() => addToCart(product)} 
-                            className="bg-purple-600 text-white py-2 px-4 rounded-full hover:bg-purple-700 transition-all duration-300"
+                            className="bg-gradient-to-r from-purple-600 to-purple-800 text-white text-sm font-semibold py-2 px-4 rounded-full hover:shadow-md hover:scale-105 transition-all duration-300 whitespace-nowrap"
                           >
                             Add to Cart
                           </button>
@@ -762,6 +786,65 @@ function App() {
                     <h4 className="font-semibold mb-2 text-gray-800">Excerpt</h4>
                     <div className="bg-gray-50 p-4 rounded-xl text-gray-600 whitespace-pre-wrap shadow-inner">
                       {selectedProduct.preview.sample}
+                    </div>
+                  </div>
+                  {/* Carrousel d’images */}
+                  <div>
+                    <h4 className="font-semibold mb-2 text-gray-800">Preview Images</h4>
+                    <div className="relative">
+                      <div className="overflow-hidden">
+                        <div 
+                          className="flex transition-transform duration-500 ease-in-out"
+                          style={{ transform: `translateX(-${imageIndex * 100}%)` }}
+                        >
+                          <div className="min-w-full">
+                            <p className="text-sm text-gray-600 mb-1 text-center">Cover</p>
+                            <img 
+                              src={selectedProduct.preview.coverImage} 
+                              alt="Cover Preview" 
+                              className="w-full h-48 object-cover rounded-lg shadow-md"
+                            />
+                          </div>
+                          <div className="min-w-full">
+                            <p className="text-sm text-gray-600 mb-1 text-center">Content Preview</p>
+                            <img 
+                              src={selectedProduct.preview.contentPreviewImage} 
+                              alt="Content Preview" 
+                              className="w-full h-48 object-cover rounded-lg shadow-md"
+                            />
+                          </div>
+                          <div className="min-w-full">
+                            <p className="text-sm text-gray-600 mb-1 text-center">Goal</p>
+                            <img 
+                              src={selectedProduct.preview.goalImage} 
+                              alt="Goal Preview" 
+                              className="w-full h-48 object-cover rounded-lg shadow-md"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      <button 
+                        onClick={() => setImageIndex((prev) => Math.max(prev - 1, 0))}
+                        className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-md hover:bg-gray-100 transition-all duration-300"
+                        disabled={imageIndex === 0}
+                      >
+                        <ChevronLeft className="h-5 w-5 text-purple-600" />
+                      </button>
+                      <button 
+                        onClick={() => setImageIndex((prev) => Math.min(prev + 1, 2))}
+                        className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-md hover:bg-gray-100 transition-all duration-300"
+                        disabled={imageIndex === 2}
+                      >
+                        <ChevronRight className="h-5 w-5 text-purple-600" />
+                      </button>
+                      <div className="flex justify-center mt-2 space-x-2">
+                        {[0, 1, 2].map((index) => (
+                          <div
+                            key={index}
+                            className={`h-2 w-2 rounded-full ${imageIndex === index ? 'bg-purple-600' : 'bg-gray-300'}`}
+                          />
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </>
@@ -1027,72 +1110,39 @@ function App() {
                   className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-600 transition-all duration-300"
                 >
                   <option value="skrill">Skrill</option>
-                  <option value="orange-money">Orange Money</option>
-                  <option value="mvola">MVola</option>
-                  <option value="western-union">Western Union</option>
+                  <option value="neteller">Neteller</option>
+                  <option value="payeer">Payeer</option>
+                  <option value="wise">Wise</option>
                 </select>
               </div>
 
-              {paymentForm.method === 'skrill' && (
+              {(paymentForm.method === 'skrill' || paymentForm.method === 'neteller' || paymentForm.method === 'payeer') && (
                 <div>
-                  <label className="block text-gray-700 mb-2 font-medium">Your Skrill Email</label>
+                  <label className="block text-gray-700 mb-2 font-medium">Your {paymentForm.method.charAt(0).toUpperCase() + paymentForm.method.slice(1)} Email</label>
                   <input
                     type="email"
-                    value={paymentForm.skrillEmail}
-                    onChange={(e) => setPaymentForm({ ...paymentForm, skrillEmail: e.target.value })}
+                    value={paymentForm.paymentEmail}
+                    onChange={(e) => setPaymentForm({ ...paymentForm, paymentEmail: e.target.value })}
                     className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-600 transition-all duration-300"
-                    placeholder="your@skrill.com"
+                    placeholder={`your@${paymentForm.method}.com`}
                     required
                   />
                   <p className="mt-2 text-gray-600 font-light">
-                    Send ${cart.reduce((sum, item) => sum + (typeof item.price === 'number' ? item.price : 0), 0)} to <strong>rabemanantsaina.tiavina@gmail.com</strong> via Skrill.
+                    Send ${cart.reduce((sum, item) => sum + (typeof item.price === 'number' ? item.price : 0), 0)} to:{' '}
+                    {paymentForm.method === 'skrill' && <strong>Rabemanantsaina.tiavina@gmail.com</strong>}
+                    {paymentForm.method === 'neteller' && <strong>rabemanantsaina.tiavina@gmail.com</strong>}
+                    {paymentForm.method === 'payeer' && <strong>P1129706318</strong>}
+                    {' '}via {paymentForm.method.charAt(0).toUpperCase() + paymentForm.method.slice(1)}. Include your delivery email in the payment note.
                   </p>
                 </div>
               )}
 
-              {(paymentForm.method === 'orange-money' || paymentForm.method === 'mvola') && (
+              {paymentForm.method === 'wise' && (
                 <div>
-                  <label className="block text-gray-700 mb-2 font-medium">Your Phone Number</label>
-                  <input
-                    type="tel"
-                    value={paymentForm.phoneNumber}
-                    onChange={(e) => setPaymentForm({ ...paymentForm, phoneNumber: e.target.value })}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-600 transition-all duration-300"
-                    placeholder="+261..."
-                    required
-                  />
-                  <label className="block text-gray-700 mb-2 mt-4 font-medium">Payment Reference (optional)</label>
-                  <input
-                    type="text"
-                    value={paymentForm.paymentReference}
-                    onChange={(e) => setPaymentForm({ ...paymentForm, paymentReference: e.target.value })}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-600 transition-all duration-300"
-                    placeholder="Ex: Order123"
-                  />
                   <p className="mt-2 text-gray-600 font-light">
-                    Send ${cart.reduce((sum, item) => sum + (typeof item.price === 'number' ? item.price : 0), 0)} (or equivalent in Ariary) to{' '}
-                    {paymentForm.method === 'orange-money' ? (
-                      <strong>+261 32 21 312 46</strong>
-                    ) : (
-                      <strong>+261 38 70 539 65</strong>
-                    )} (Rabemanantsaina Tiavina Severin) via {paymentForm.method === 'orange-money' ? 'Orange Money' : 'MVola'}.
+                    Send ${cart.reduce((sum, item) => sum + (typeof item.price === 'number' ? item.price : 0), 0)} to <strong>rabemanantsaina.tiavina@gmail.com</strong> via Wise. Include your delivery email ({paymentForm.deliveryEmail}) in the payment note.
                   </p>
-                </div>
-              )}
-
-              {paymentForm.method === 'western-union' && (
-                <div>
-                  <label className="block text-gray-700 mb-2 font-medium">MTCN (optional, add after payment)</label>
-                  <input
-                    type="text"
-                    value={paymentForm.mtcn}
-                    onChange={(e) => setPaymentForm({ ...paymentForm, mtcn: e.target.value })}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-600 transition-all duration-300"
-                    placeholder="Enter MTCN after payment"
-                  />
-                  <p className="mt-2 text-gray-600 font-light">
-                    Send ${cart.reduce((sum, item) => sum + (typeof item.price === 'number' ? item.price : 0), 0)} to <strong>Rabemanantsaina Tiavina Severin, Madagascar</strong> via Western Union. Provide the MTCN after payment.
-                  </p>
+                  <p className="mt-2 text-gray-500 text-sm">After payment, your products will be sent to your delivery email.</p>
                 </div>
               )}
 
@@ -1107,6 +1157,69 @@ function App() {
           </div>
         </div>
       )}
+
+      {/* Payment Instructions Modal */}
+      {showPaymentInstructions && lastOrder && (
+        <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
+          <div className="bg-white rounded-3xl p-8 max-w-3xl w-full shadow-2xl backdrop-blur-md">
+            <div className="flex justify-between items-center mb-6">
+              <h3 className="text-3xl font-bold text-gray-800">Payment Instructions</h3>
+              <button
+                onClick={() => setShowPaymentInstructions(null)}
+                className="text-gray-500 hover:text-gray-700 transition-colors duration-300"
+              >
+                <X className="h-6 w-6" />
+              </button>
+            </div>
+            <div className="bg-gray-50 p-6 rounded-xl shadow-inner">
+              <div className="text-center mb-6">
+                <h4 className="text-2xl font-semibold text-purple-600">GlobalDigiStore Invoice</h4>
+                <p className="text-gray-600 mt-2">Thank you for your order!</p>
+              </div>
+              <div className="border-t border-b border-gray-300 py-4 mb-6">
+                <p className="text-lg text-gray-800 font-medium">Order Summary:</p>
+                <ul className="list-disc list-inside text-gray-600 mt-2">
+                  {lastOrder.items.map((item, index) => (
+                    <li key={index}>{item.title} - ${item.price}</li>
+                  ))}
+                </ul>
+                <p className="text-xl font-bold text-gray-800 mt-4">
+                  Total: ${lastOrder.total}
+                </p>
+              </div>
+              <div>
+                <p className="text-lg font-medium text-gray-800 mb-2">Payment Instructions:</p>
+                <p className="text-gray-700 whitespace-pre-wrap bg-white p-4 rounded-lg shadow-sm markdown">
+                  {showPaymentInstructions.split('**').map((part, index) =>
+                    index % 2 === 1 ? <strong key={index}>{part}</strong> : part
+                  )}
+                </p>
+                <p className="text-sm text-gray-500 mt-4">
+                  After sending the payment, your products will be delivered to {paymentForm.deliveryEmail} within 24-48 hours upon confirmation.
+                </p>
+                <p className="text-sm text-red-600 font-semibold mt-2">
+                  Important: Click "I’ve Paid" ONLY if you have already completed the payment as instructed above. If you haven’t paid yet, click "Cancel" to close this window.
+                </p>
+              </div>
+            </div>
+            <div className="mt-6 flex justify-center space-x-4">
+              <button
+                onClick={() => setShowPaymentInstructions(null)}
+                className="bg-gray-500 text-white py-3 px-8 rounded-full hover:bg-gray-600 transition-all duration-300 font-semibold"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={handlePaymentConfirmation}
+                className="bg-gradient-to-r from-purple-600 to-orange-400 text-white py-3 px-8 rounded-full hover:shadow-xl hover:scale-105 transition-all duration-300 font-semibold"
+              >
+                I’ve Paid
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
     </div>
   );
 }
