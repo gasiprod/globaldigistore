@@ -1214,65 +1214,65 @@ function App() {
 
       {/* Payment Instructions Modal */}
       {showPaymentInstructions && lastOrder && (
-        <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
-          <div className="bg-white rounded-3xl p-8 max-w-3xl w-full shadow-2xl backdrop-blur-md">
-            <div className="flex justify-between items-center mb-6">
-              <h3 className="text-3xl font-bold text-gray-800">Payment Instructions</h3>
-              <button
-                onClick={() => setShowPaymentInstructions(null)}
-                className="text-gray-500 hover:text-gray-700 transition-colors duration-300"
-              >
-                <X className="h-6 w-6" />
-              </button>
-            </div>
-            <div className="bg-gray-50 p-6 rounded-xl shadow-inner">
-              <div className="text-center mb-6">
-                <h4 className="text-2xl font-semibold text-purple-600">GlobalDigiStore Invoice</h4>
-                <p className="text-gray-600 mt-2">Thank you for your order!</p>
-              </div>
-              <div className="border-t border-b border-gray-300 py-4 mb-6">
-                <p className="text-lg text-gray-800 font-medium">Order Summary:</p>
-                <ul className="list-disc list-inside text-gray-600 mt-2">
-                  {lastOrder.items.map((item, index) => (
-                    <li key={index}>{item.title} - ${item.price}</li>
-                  ))}
-                </ul>
-                <p className="text-xl font-bold text-gray-800 mt-4">
-                  Total: ${lastOrder.total}
-                </p>
-              </div>
-              <div>
-                <p className="text-lg font-medium text-gray-800 mb-2">Payment Instructions:</p>
-                <p className="text-gray-700 whitespace-pre-wrap bg-white p-4 rounded-lg shadow-sm markdown">
-                  {showPaymentInstructions.split('**').map((part, index) =>
-                    index % 2 === 1 ? <strong key={index}>{part}</strong> : part
-                  )}
-                </p>
-                <p className="text-sm text-gray-500 mt-4">
-                  After sending the payment, your products will be delivered to {paymentForm.deliveryEmail} within 24-48 hours upon confirmation.
-                </p>
-                <p className="text-sm text-red-600 font-semibold mt-2">
-                  Important: Click "I’ve Paid" ONLY if you have already completed the payment as instructed above. If you haven’t paid yet, click "Cancel" to close this window.
-                </p>
-              </div>
-            </div>
-            <div className="mt-6 flex justify-center space-x-4">
-              <button
-                onClick={() => setShowPaymentInstructions(null)}
-                className="bg-gray-500 text-white py-3 px-8 rounded-full hover:bg-gray-600 transition-all duration-300 font-semibold"
-              >
-                Cancel
-              </button>
-              <button
-                onClick={handlePaymentConfirmation}
-                className="bg-gradient-to-r from-purple-600 to-orange-400 text-white py-3 px-8 rounded-full hover:shadow-xl hover:scale-105 transition-all duration-300 font-semibold"
-              >
-                I’ve Paid
-              </button>
-            </div>
-          </div>
+  <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
+    <div className="bg-white rounded-3xl p-6 max-w-2xl w-full max-h-[65vh] overflow-y-auto shadow-2xl backdrop-blur-md">
+      <div className="flex justify-between items-center mb-4">
+        <h3 className="text-2xl font-bold text-gray-800">Payment Instructions</h3>
+        <button
+          onClick={() => setShowPaymentInstructions(null)}
+          className="text-gray-500 hover:text-gray-700 transition-colors duration-300"
+        >
+          <X className="h-6 w-6" />
+        </button>
+      </div>
+      <div className="bg-gray-50 p-4 rounded-xl shadow-inner">
+        <div className="text-center mb-4">
+          <h4 className="text-xl font-semibold text-purple-600">GlobalDigiStore Invoice</h4>
+          <p className="text-gray-600 mt-1">Thank you for your order!</p>
         </div>
-      )}
+        <div className="border-t border-b border-gray-300 py-3 mb-4">
+          <p className="text-base text-gray-800 font-medium">Order Summary:</p>
+          <ul className="list-disc list-inside text-gray-600 mt-1">
+            {lastOrder.items.map((item, index) => (
+              <li key={index}>{item.title} - ${item.price}</li>
+            ))}
+          </ul>
+          <p className="text-lg font-bold text-gray-800 mt-2">
+            Total: ${lastOrder.total}
+          </p>
+        </div>
+        <div>
+          <p className="text-base font-medium text-gray-800 mb-1">Payment Instructions:</p>
+          <p className="text-gray-700 whitespace-pre-wrap bg-white p-3 rounded-lg shadow-sm markdown text-sm">
+            {showPaymentInstructions.split('**').map((part, index) =>
+              index % 2 === 1 ? <strong key={index}>{part}</strong> : part
+            )}
+          </p>
+          <p className="text-xs text-gray-500 mt-2">
+            After sending the payment, your products will be delivered to {paymentForm.deliveryEmail} within 24-48 hours upon confirmation.
+          </p>
+          <p className="text-xs text-red-600 font-semibold mt-1">
+            Important: Click "I’ve Paid" ONLY if you have already completed the payment as instructed above. If you haven’t paid yet, click "Cancel" to close this window.
+          </p>
+        </div>
+      </div>
+      <div className="mt-4 flex justify-center space-x-4">
+        <button
+          onClick={() => setShowPaymentInstructions(null)}
+          className="bg-gray-500 text-white py-2 px-6 rounded-full hover:bg-gray-600 transition-all duration-300 font-semibold"
+        >
+          Cancel
+        </button>
+        <button
+          onClick={handlePaymentConfirmation}
+          className="bg-gradient-to-r from-purple-600 to-orange-400 text-white py-2 px-6 rounded-full hover:shadow-xl hover:scale-105 transition-all duration-300 font-semibold"
+        >
+          I’ve Paid
+        </button>
+      </div>
+    </div>
+  </div>
+)}
       {showBlogModal && selectedPost && (
   <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
     <div className="bg-white rounded-3xl p-8 max-w-3xl w-full max-h-[80vh] overflow-y-auto shadow-2xl backdrop-blur-md">
