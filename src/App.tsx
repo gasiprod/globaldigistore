@@ -11,6 +11,9 @@ function App() {
   const [showPaymentInstructions, setShowPaymentInstructions] = useState<string | null>(null);
   const [selectedProduct, setSelectedProduct] = useState<any>(null);
   const [activeCategory, setActiveCategory] = useState('all');
+  // Ajout pour le blog
+  const [showBlogModal, setShowBlogModal] = useState(false);
+  const [selectedPost, setSelectedPost] = useState<any>(null);
   const [customServiceForm, setCustomServiceForm] = useState({
     taskCategory: '', deadline: '', budget: '', details: '', email: ''
   });
@@ -46,6 +49,34 @@ function App() {
 
   const products = [
     {
+      title: "7 jours hors écran",
+      description: "7 jours pour décrocher et respirer enfin !",
+      image: "/assets/7j-hors-ecran-prnpcl.png",
+      price: 5,
+      format: "PDF",
+      category: "ebooks",
+      languages: ["Français", "Anglais"], // Ajout des versions
+      preview: {
+        description: "Déconnecte-toi des écrans et reconnecte-toi à toi-même en seulement 7 jours ! Ce guide pratique te propose un défi quotidien simple et efficace pour retrouver calme, focus et énergie, sans renoncer totalement à ton smartphone. Testé et approuvé, il va transformer ta relation aux écrans — et ta vie !",
+        chapters: [
+          "Introduction : Pourquoi décrocher ?",
+          "Avant de commencer : Les écrans et nous",
+          "Jour 1 : Matin sans scroll",
+          "Jour 2 : Une heure analogique",
+          "Jour 3 : Repas déconnecté",
+          "Jour 4 : Pause nature",
+          "Jour 5 : Mono-tâche",
+          "Jour 6 : Grand ménage numérique",
+          "Jour 7 : Journée hors écran",
+          "Conclusion : Et après ?"
+        ],
+        sample: "Tu te réveilles, et bam, ton téléphone est déjà dans ta main. Un scroll, un mail, une vidéo… et une heure disparaît. Ça te parle ? Moi aussi, j’étais accro. Jusqu’à ce que je dise stop — pas un stop radical, juste un pas de côté. Ce guide, c’est ma méthode : 7 jours, 7 défis simples pour lâcher les écrans sans paniquer. Jour 1 : pas de scroll le matin. Ça semble facile ? Attends de voir comme ça change tout. Prêt à essayer ?",
+        coverImage: "/assets/7j-hors-ecran-cover.png",
+        contentPreviewImage: "/assets/7j-hors-ecran-content.png",
+        goalImage: "/assets/7j-hors-ecran-goal.png"
+      }
+    },
+    {
       title: 'Exotic Recipes Book',
       description: 'Discover unique flavors from around the world',
       image: 'https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&q=80&w=400',
@@ -65,51 +96,32 @@ function App() {
       }
     },
     {
-      title: 'Beginner Yoga Guide',
-      description: 'Start your journey to wellness',
-      image: "/assets/master-IA-prnpcl.png",
-      price: 7,
-      format: 'PDF',
-      category: 'ebooks',
-      preview: {
-        description: 'A simple guide to start yoga and improve your physical and mental well-being.',
-        chapters: [
-          'Introduction to Yoga',
-          'Basic Poses',
-          'Breathing Techniques',
-          'Meditation for Beginners',
-          'Training Plan'
-        ],
-        sample: `Chapter 1: Introduction to Yoga\nYoga is a millennia-old practice...`
-      }
-    },
-    {
-      title: "7 jours hors écran",
-      description:"7 jours pour décrocher et respirer enfin !",
-      image: "/assets/7j-hors-ecran-prnpcl.png",
-      price: 5,
+      title: "Maîtriser l’IA pour Booster Votre Business en 2025",
+      description: "Transformez l’IA en levier de succès dès aujourd’hui !",
+      image: "/assets/master-ia-2025-3d.jpg",
+      price: 9,
       format: "PDF",
       category: "ebooks",
+      languages: ["Français", "Anglais"], // Ajout des versions
       preview: {
-        description: "Déconnecte-toi des écrans et reconnecte-toi à toi-même en seulement 7 jours ! Ce guide pratique te propose un défi quotidien simple et efficace pour retrouver calme, focus et énergie, sans renoncer totalement à ton smartphone. Testé et approuvé, il va transformer ta relation aux écrans — et ta vie !",
+        description: "En 2025, l’IA est le secret des entreprises qui dominent. Ce guide pratique vous montre comment l’exploiter pour automatiser, innover et booster vos revenus, sans être un pro de la tech. Votre raccourci vers le succès commence ici !",
         chapters: [
-          "Introduction : Pourquoi décrocher ?",
-          "Avant de commencer : Les écrans et nous",
-          "Jour 1 : Matin sans scroll",
-          "Jour 2 : Une heure analogique",
-          "Jour 3 : Repas déconnecté",
-          "Jour 4 : Pause nature",
-          "Jour 5 : Mono-tâche",
-          "Jour 6 : Grand ménage numérique",
-          "Jour 7 : Journée hors écran",
-          "Conclusion : Et après ?"
+          "Introduction : L’IA, Votre Ticket pour Dominer 2025",
+          "Chapitre 1 : Pourquoi l’IA est Votre Atout Business",
+          "Chapitre 2 : Les Outils IA Incontournables pour les Pros",
+          "Chapitre 3 : Stratégies IA Gagnantes pour Votre Secteur",
+          "Chapitre 4 : Éviter les Pièges de l’IA dans Votre Business",
+          "Chapitre 5 : Votre Plan d’Action 2025 avec l’IA",
+          "Conclusion : Votre Victoire 2025 Commence Aujourd’hui",
+          "Bonus : Vos Outils pour Dominer 2025"
         ],
-        sample: "Tu te réveilles, et bam, ton téléphone est déjà dans ta main. Un scroll, un mail, une vidéo… et une heure disparaît. Ça te parle ? Moi aussi, j’étais accro. Jusqu’à ce que je dise stop — pas un stop radical, juste un pas de côté. Ce guide, c’est ma méthode : 7 jours, 7 défis simples pour lâcher les écrans sans paniquer. Jour 1 : pas de scroll le matin. Ça semble facile ? Attends de voir comme ça change tout. Prêt à essayer ?",
-        coverImage: "/assets/7j-hors-ecran-cover.png",
-        contentPreviewImage: "/assets/7j-hors-ecran-content.png",
-        goalImage: "/assets/7j-hors-ecran-goal.png",
+        sample: "Imaginez : pendant que vos concurrents s’épuisent, vous sirotez un café, votre business boosté par l’IA. Ce guide transforme cette ‘chose mystérieuse’ en alliée concrète. Exemple ? Chapitre 2 : un outil IA gratuit qui vous fait gagner 5h/semaine. Prêt à changer la donne ?",
+        coverImage: "/assets/cover-master-ia-2025-3d.png",
+        contentPreviewImage: "/assets/content-master-ia-2025-3d.png",
+        goalImage: "/assets/goal-master-ia-2025-3d.png"
       }
     },
+    
     {
       title: 'Urban Gardening Manual',
       description: 'Create your green oasis in the city',
@@ -203,28 +215,63 @@ function App() {
 
   const blogPosts = [
     {
-      title: '5 Easy Recipes for Beginners',
-      date: 'March 15, 2024',
-      category: 'Cooking',
-      description: 'Discover simple and delicious recipes to start cooking with confidence.',
-      image: 'https://images.unsplash.com/photo-1466637574441-749b8f19452f?auto=format&fit=crop&q=80&w=400',
-      link: 'https://example.com/blog/easy-recipes'
+      title: "L’IA en 2025 : Les Dernières Avancées qui Vont Changer Votre Vie",
+      date: "March 29, 2025",
+      category: "Technology",
+      description: "Un tour d’horizon des progrès de l’IA en 2025 et leur impact pour vous.",
+      image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&q=80&w=400",
+      link: "#", // Pas besoin si on utilise la modale
+      content: `
+  ### L’IA en 2025 : Les Dernières Avancées qui Vont Changer Votre Vie
+  
+  #### Introduction
+  Saviez-vous que, en mars 2025, une IA a composé une chanson entière en moins de 10 secondes pour un élève de 14 ans ? L’intelligence artificielle n’est plus une promesse futuriste : elle redéfinit notre quotidien. De la création de contenu à l’automatisation des affaires, les avancées de 2025 sont là pour rester. Dans cet article, on explore les dernières nouvelles de l’IA et comment elles peuvent transformer vos projets.
+  
+  #### Les grandes avancées IA en 2025
+  **1. L’IA qui pense comme nous**  
+  Google a lancé Gemini 2.5, un modèle qui "raisonne" sur des problèmes complexes, surpassant ses prédécesseurs en maths et sciences. Pendant ce temps, en Chine, Zhipu AI rend ses modèles open-source, accélérant l’innovation mondiale.
+  
+  **2. Des puces plus puissantes**  
+  NVIDIA Blackwell, lancé récemment, offre 40 fois la performance des anciennes puces Hopper. TSMC, lui, prépare des puces 2nm pour fin 2025, rendant l’IA plus rapide et économe.
+  
+  **3. L’IA dans votre poche**  
+  Apple explore des montres avec caméras IA pour des interactions visuelles. Imaginez demander à votre montre d’analyser une image en temps réel !
+  
+  #### Impact pour les créateurs et entrepreneurs
+  Ces avancées ne sont pas juste techniques : elles sont pour vous. Une IA générative peut rédiger vos posts ou designs en un instant. Nos eBooks, comme *"Maîtriser l’IA pour Booster Votre Business en 2025"*, vous guident pour tirer parti de ces outils dès aujourd’hui. Que vous soyez entrepreneur ou créateur, 2025 est votre année pour briller avec l’IA.
+  
+  #### Conclusion
+  L’IA en 2025, c’est plus de puissance, d’accessibilité et de possibilités. Que pensez-vous de ces évolutions ? Dites-le-nous en commentaire ! Et si vous voulez dompter cette révolution, jetez un œil à nos eBooks. L’IA n’est pas une menace, c’est votre futur allié !
+      `
     },
-    {
-      title: 'How to Meditate in 10 Minutes a Day',
-      date: 'March 12, 2024',
-      category: 'Wellness',
-      description: 'A simple guide to integrate meditation into your daily routine.',
-      image: 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&q=80&w=400',
-      link: 'https://example.com/blog/meditation-10-minutes'
-    }
-  ];
+  {
+    title: '5 Easy Recipes for Beginners',
+    date: 'March 15, 2024',
+    category: 'Cooking',
+    description: 'Discover simple and delicious recipes to start cooking with confidence.',
+    image: 'https://images.unsplash.com/photo-1466637574441-749b8f19452f?auto=format&fit=crop&q=80&w=400',
+    link: 'https://example.com/blog/easy-recipes'
+  },
+  {
+    title: 'How to Meditate in 10 Minutes a Day',
+    date: 'March 12, 2024',
+    category: 'Wellness',
+    description: 'A simple guide to integrate meditation into your daily routine.',
+    image: 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&q=80&w=400',
+    link: 'https://example.com/blog/meditation-10-minutes'
+  },
+  
+];
 
   const handlePreview = (product: any) => {
     setSelectedProduct(product);
     setShowPreviewModal(true);
     setImageIndex(0); // Réinitialise l’index du carrousel à 0 à chaque ouverture
   };
+  const handleBlogReadMore = (post: any) => {
+  setSelectedPost(post);
+  setShowBlogModal(true);
+};
 
   const addToCart = (product: any) => {
     setCart([...cart, product]);
@@ -384,10 +431,14 @@ function App() {
       <header className="fixed w-full bg-white bg-opacity-90 shadow-2xl z-50 rounded-b-3xl backdrop-blur-md">
         <div className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
-            <div className="flex items-center">
-              <ShoppingCart className="h-10 w-10 text-purple-600 transition-transform duration-500 hover:scale-110 hover:rotate-12" />
-              <span className="ml-3 text-2xl font-extrabold text-purple-600 tracking-tight">GlobalDigiStore</span>
-            </div>
+          <div className="flex items-center">
+  <img 
+    src="/assets/Globaldigistore.png" 
+    alt="GlobalDigiStore Logo" 
+    className="h-12 w-12 mr-3 object-contain transition-transform duration-500 hover:scale-110 hover:rotate-12" 
+  />
+  <span className="ml-3 text-2xl font-extrabold text-purple-600 tracking-tight">GlobalDigiStore</span>
+</div>
             
             <div className="flex items-center space-x-4">
               <nav className="hidden md:flex space-x-12">
@@ -539,7 +590,12 @@ function App() {
                     <div className="p-6">
                       <h3 className="text-2xl font-semibold mb-2 text-gray-800">{product.title}</h3>
                       <p className="text-gray-600 mb-4 font-light">{product.description}</p>
-                      <p className="text-sm text-gray-500 mb-3">Format: {product.format}</p>
+                      <div className="text-sm text-gray-500 mb-3">
+  <p>Format: {product.format}</p>
+  {product.languages && (
+    <p>Disponible en : {product.languages.join(", ")}</p>
+  )}
+</div>
                       <div className="flex items-center space-x-3">
                         <button 
                           onClick={() => handlePreview(product)} 
@@ -593,14 +649,12 @@ function App() {
                   </div>
                   <h3 className="text-2xl font-semibold mb-2 text-gray-800">{post.title}</h3>
                   <p className="text-gray-600 mb-4 font-light">{post.description}</p>
-                  <a 
-                    href={post.link} 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="text-purple-600 hover:text-purple-700 font-semibold transition-colors duration-300 flex items-center"
-                  >
-                    Read More <ArrowRight className="ml-2 h-4 w-4 animate-pulse" />
-                  </a>
+                  <button 
+  onClick={() => handleBlogReadMore(post)}
+  className="text-purple-600 hover:text-purple-700 font-semibold transition-colors duration-300 flex items-center"
+>
+  Read More <ArrowRight className="ml-2 h-4 w-4 animate-pulse" />
+</button>
                 </div>
               </div>
             ))}
@@ -1219,7 +1273,70 @@ function App() {
           </div>
         </div>
       )}
-
+      {showBlogModal && selectedPost && (
+  <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
+    <div className="bg-white rounded-3xl p-8 max-w-3xl w-full max-h-[80vh] overflow-y-auto shadow-2xl backdrop-blur-md">
+      <div className="flex justify-between items-center mb-6">
+        <h3 className="text-2xl font-bold text-gray-800">{selectedPost.title}</h3>
+        <button
+          onClick={() => setShowBlogModal(false)}
+          className="text-gray-500 hover:text-gray-700 transition-colors duration-300"
+        >
+          <X className="h-6 w-6" />
+        </button>
+      </div>
+      <img 
+        src={selectedPost.image} 
+        alt={`${selectedPost.title} Image`} 
+        className="w-full h-64 object-cover rounded-xl mb-6 shadow-md"
+      />
+      <div className="flex items-center text-sm text-gray-500 mb-6">
+        <span>{selectedPost.date}</span>
+        <span className="mx-2">•</span>
+        <span>{selectedPost.category}</span>
+        <span className="mx-2">•</span>
+        <span>5 min de lecture</span>
+        <span className="mx-2">•</span>
+        <span>Par GlobalDigiStore</span>
+      </div>
+      <div className="text-gray-600 font-light whitespace-pre-wrap">
+        {selectedPost.content.split('\n').map((line: string, index: number) => {
+          if (line.startsWith('### ')) {
+            return <h3 key={index} className="text-xl font-semibold text-gray-800 mt-6 mb-2">{line.slice(4)}</h3>;
+          } else if (line.startsWith('**')) {
+            return <p key={index} className="font-bold mt-4 mb-2">{line.slice(2, -2)}</p>;
+          } else if (line.startsWith('- ') || line.startsWith('* ')) {
+            return <li key={index} className="ml-4 mb-2 list-disc">{line.slice(2)}</li>;
+          } else if (line.trim()) {
+            return <p key={index} className="mb-4">{line}</p>;
+          }
+          return null;
+        })}
+      </div>
+      <div className="mt-6 text-center">
+  <p className="text-gray-600 mb-4">
+    Envie de dompter l’IA ? Découvrez notre eBook{' '}
+    <button
+      onClick={() => {
+        setShowBlogModal(false); // Ferme la modale
+        document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' }); // Défile vers #products
+      }}
+      className="text-purple-600 hover:underline focus:outline-none"
+    >
+      Maîtriser l’IA 2025
+    </button>{' '}
+    !
+  </p>
+  <button 
+    onClick={() => setShowBlogModal(false)}
+    className="text-purple-600 hover:text-purple-700 font-semibold transition-colors duration-300 flex items-center mx-auto"
+  >
+    Retour au blog <ArrowRight className="ml-2 h-4 w-4" />
+  </button>
+</div>
+    </div>
+  </div>
+)}
     </div>
   );
 }
