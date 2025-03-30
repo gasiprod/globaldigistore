@@ -1,7 +1,8 @@
 import React from 'react';
-import { Menu, ShoppingCart, Mail, Facebook, Twitter, Instagram, ArrowRight, Book, Palette, Layout, X, ChevronLeft, ChevronRight, Send, Video, Eye } from 'lucide-react';
+import { Menu, ShoppingCart, Mail, ArrowRight, Book, Palette, Layout, X, ChevronLeft, ChevronRight, Send, Video, Eye } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import emailjs from '@emailjs/browser';
+import { FaTwitter, FaInstagram, FaTiktok, FaFacebook, FaYoutube } from 'react-icons/fa'; // FaXTwitter remplacé par FaTwitter si nécessaire
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -11,7 +12,6 @@ function App() {
   const [showPaymentInstructions, setShowPaymentInstructions] = useState<string | null>(null);
   const [selectedProduct, setSelectedProduct] = useState<any>(null);
   const [activeCategory, setActiveCategory] = useState('all');
-  // Ajout pour le blog
   const [showBlogModal, setShowBlogModal] = useState(false);
   const [selectedPost, setSelectedPost] = useState<any>(null);
   const [customServiceForm, setCustomServiceForm] = useState({
@@ -27,7 +27,7 @@ function App() {
   const [cart, setCart] = useState<any[]>([]);
   const [lastOrder, setLastOrder] = useState<{ items: any[]; total: number; paymentDetails: string } | null>(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [imageIndex, setImageIndex] = useState(0); // Ajouté pour le carrousel
+  const [imageIndex, setImageIndex] = useState(0);
 
   useEffect(() => {
     emailjs.init("E-PnNwTaKX0lZR5hO");
@@ -55,7 +55,7 @@ function App() {
       price: 5,
       format: "PDF",
       category: "ebooks",
-      languages: ["Français", "Anglais"], // Ajout des versions
+      languages: ["Français", "Anglais"],
       preview: {
         description: "Déconnecte-toi des écrans et reconnecte-toi à toi-même en seulement 7 jours ! Ce guide pratique te propose un défi quotidien simple et efficace pour retrouver calme, focus et énergie, sans renoncer totalement à ton smartphone. Testé et approuvé, il va transformer ta relation aux écrans — et ta vie !",
         chapters: [
@@ -102,7 +102,7 @@ function App() {
       price: 9,
       format: "PDF",
       category: "ebooks",
-      languages: ["Français", "Anglais"], // Ajout des versions
+      languages: ["Français", "Anglais"],
       preview: {
         description: "En 2025, l’IA est le secret des entreprises qui dominent. Ce guide pratique vous montre comment l’exploiter pour automatiser, innover et booster vos revenus, sans être un pro de la tech. Votre raccourci vers le succès commence ici !",
         chapters: [
@@ -121,7 +121,6 @@ function App() {
         goalImage: "/assets/goal-master-ia-2025-3d.png"
       }
     },
-    
     {
       title: 'Urban Gardening Manual',
       description: 'Create your green oasis in the city',
@@ -206,7 +205,6 @@ function App() {
         description: 'We bring your projects to life with custom solutions: graphic design, web design, video editing, and more. Fill out the form to submit your request!'
       }
     },
-   
   ];
 
   const filteredProducts = activeCategory === 'all' 
@@ -220,7 +218,6 @@ function App() {
       category: "Technology",
       description: "Un tour d’horizon des progrès de l’IA en 2025 et leur impact pour vous.",
       image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&q=80&w=400",
-      link: "#", // Pas besoin si on utilise la modale
       content: `
   ### L’IA en 2025 : Les Dernières Avancées qui Vont Changer Votre Vie
   
@@ -229,7 +226,7 @@ function App() {
   
   #### Les grandes avancées IA en 2025
   **1. L’IA qui pense comme nous**  
-  Google a lancé Gemini 2.5, un modèle qui "raisonne" sur des problèmes complexes, surpassant ses prédécesseurs en maths et sciences. Pendant ce temps, en Chine, Zhipu AI rend ses modèles open-source, accélérant l’innovation mondiale.
+  Google a lancé Gemini 2.5, un modèle qui "raisonne" sur des problèmes complexes, surpassant ses prédécesseurs en maths et sciences. Pendant ce temps, en Chine, Zhipu AI rend ses modèles open-source, accelérant l’innovation mondiale.
   
   **2. Des puces plus puissantes**  
   NVIDIA Blackwell, lancé récemment, offre 40 fois la performance des anciennes puces Hopper. TSMC, lui, prépare des puces 2nm pour fin 2025, rendant l’IA plus rapide et économe.
@@ -244,34 +241,34 @@ function App() {
   L’IA en 2025, c’est plus de puissance, d’accessibilité et de possibilités. Que pensez-vous de ces évolutions ? Dites-le-nous en commentaire ! Et si vous voulez dompter cette révolution, jetez un œil à nos eBooks. L’IA n’est pas une menace, c’est votre futur allié !
       `
     },
-  {
-    title: '5 Easy Recipes for Beginners',
-    date: 'March 15, 2024',
-    category: 'Cooking',
-    description: 'Discover simple and delicious recipes to start cooking with confidence.',
-    image: 'https://images.unsplash.com/photo-1466637574441-749b8f19452f?auto=format&fit=crop&q=80&w=400',
-    link: 'https://example.com/blog/easy-recipes'
-  },
-  {
-    title: 'How to Meditate in 10 Minutes a Day',
-    date: 'March 12, 2024',
-    category: 'Wellness',
-    description: 'A simple guide to integrate meditation into your daily routine.',
-    image: 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&q=80&w=400',
-    link: 'https://example.com/blog/meditation-10-minutes'
-  },
-  
-];
+    {
+      title: '5 Easy Recipes for Beginners',
+      date: 'March 15, 2024',
+      category: 'Cooking',
+      description: 'Discover simple and delicious recipes to start cooking with confidence.',
+      image: 'https://images.unsplash.com/photo-1466637574441-749b8f19452f?auto=format&fit=crop&q=80&w=400',
+      link: 'https://example.com/blog/easy-recipes'
+    },
+    {
+      title: 'How to Meditate in 10 Minutes a Day',
+      date: 'March 12, 2024',
+      category: 'Wellness',
+      description: 'A simple guide to integrate meditation into your daily routine.',
+      image: 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&q=80&w=400',
+      link: 'https://example.com/blog/meditation-10-minutes'
+    },
+  ];
 
   const handlePreview = (product: any) => {
     setSelectedProduct(product);
     setShowPreviewModal(true);
-    setImageIndex(0); // Réinitialise l’index du carrousel à 0 à chaque ouverture
+    setImageIndex(0);
   };
+
   const handleBlogReadMore = (post: any) => {
-  setSelectedPost(post);
-  setShowBlogModal(true);
-};
+    setSelectedPost(post);
+    setShowBlogModal(true);
+  };
 
   const addToCart = (product: any) => {
     setCart([...cart, product]);
@@ -410,17 +407,26 @@ function App() {
   const scrollLeft = () => {
     const container = document.getElementById('product-carousel');
     if (container) {
-      container.scrollBy({ left: -400, behavior: 'smooth' });
-      setScrollPosition(container.scrollLeft - 400);
+      const newPosition = Math.max(container.scrollLeft - 400, 0);
+      container.scrollTo({ left: newPosition, behavior: 'smooth' });
+      setScrollPosition(newPosition);
     }
   };
 
   const scrollRight = () => {
     const container = document.getElementById('product-carousel');
     if (container) {
-      container.scrollBy({ left: 400, behavior: 'smooth' });
-      setScrollPosition(container.scrollLeft + 400);
+      const maxScroll = container.scrollWidth - container.clientWidth;
+      const newPosition = Math.min(container.scrollLeft + 400, maxScroll);
+      container.scrollTo({ left: newPosition, behavior: 'smooth' });
+      setScrollPosition(newPosition);
     }
+  };
+
+  const isAtStart = scrollPosition === 0;
+  const isAtEnd = () => {
+    const container = document.getElementById('product-carousel');
+    return container ? scrollPosition >= (container.scrollWidth - container.clientWidth - 1) : false;
   };
 
   return (
@@ -431,14 +437,14 @@ function App() {
       <header className="fixed w-full bg-white bg-opacity-90 shadow-2xl z-50 rounded-b-3xl backdrop-blur-md">
         <div className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
-          <div className="flex items-center">
-  <img 
-    src="/assets/Globaldigistore.png" 
-    alt="GlobalDigiStore Logo" 
-    className="h-12 w-12 mr-3 object-contain transition-transform duration-500 hover:scale-110 hover:rotate-12" 
-  />
-  <span className="ml-3 text-2xl font-extrabold text-purple-600 tracking-tight">GlobalDigiStore</span>
-</div>
+            <div className="flex items-center">
+              <img 
+                src="/assets/Globaldigistore.png" 
+                alt="GlobalDigiStore Logo" 
+                className="h-12 w-12 mr-3 object-contain transition-transform duration-500 hover:scale-110 hover:rotate-12" 
+              />
+              <span className="ml-3 text-2xl font-extrabold text-purple-600 tracking-tight">GlobalDigiStore</span>
+            </div>
             
             <div className="flex items-center space-x-4">
               <nav className="hidden md:flex space-x-12">
@@ -570,7 +576,8 @@ function App() {
           <div className="relative">
             <button 
               onClick={scrollLeft} 
-              className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white p-4 rounded-full shadow-xl hover:bg-purple-100 transition-all duration-300 z-10"
+              className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white p-4 rounded-full shadow-xl hover:bg-purple-100 transition-all duration-300 z-10 disabled:opacity-50"
+              disabled={isAtStart}
             >
               <ChevronLeft className="h-6 w-6 text-purple-600" />
             </button>
@@ -591,11 +598,11 @@ function App() {
                       <h3 className="text-2xl font-semibold mb-2 text-gray-800">{product.title}</h3>
                       <p className="text-gray-600 mb-4 font-light">{product.description}</p>
                       <div className="text-sm text-gray-500 mb-3">
-  <p>Format: {product.format}</p>
-  {product.languages && (
-    <p>Disponible en : {product.languages.join(", ")}</p>
-  )}
-</div>
+                        <p>Format: {product.format}</p>
+                        {product.languages && (
+                          <p>Disponible en : {product.languages.join(", ")}</p>
+                        )}
+                      </div>
                       <div className="flex items-center space-x-3">
                         <button 
                           onClick={() => handlePreview(product)} 
@@ -622,7 +629,8 @@ function App() {
             </div>
             <button 
               onClick={scrollRight} 
-              className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white p-4 rounded-full shadow-xl hover:bg-purple-100 transition-all duration-300 z-10"
+              className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white p-4 rounded-full shadow-xl hover:bg-purple-100 transition-all duration-300 z-10 disabled:opacity-50"
+              disabled={isAtEnd()}
             >
               <ChevronRight className="h-6 w-6 text-purple-600" />
             </button>
@@ -650,11 +658,11 @@ function App() {
                   <h3 className="text-2xl font-semibold mb-2 text-gray-800">{post.title}</h3>
                   <p className="text-gray-600 mb-4 font-light">{post.description}</p>
                   <button 
-  onClick={() => handleBlogReadMore(post)}
-  className="text-purple-600 hover:text-purple-700 font-semibold transition-colors duration-300 flex items-center"
->
-  Read More <ArrowRight className="ml-2 h-4 w-4 animate-pulse" />
-</button>
+                    onClick={() => handleBlogReadMore(post)}
+                    className="text-purple-600 hover:text-purple-700 font-semibold transition-colors duration-300 flex items-center"
+                  >
+                    Read More <ArrowRight className="ml-2 h-4 w-4 animate-pulse" />
+                  </button>
                 </div>
               </div>
             ))}
@@ -745,61 +753,91 @@ function App() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12">
-        <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
-            <div>
-              <div className="flex items-center mb-4">
-                <ShoppingCart className="h-10 w-10 text-purple-400 transition-transform duration-500 hover:scale-110 hover:rotate-12" />
-                <span className="ml-3 text-2xl font-extrabold">GlobalDigiStore</span>
-              </div>
-              <p className="text-gray-400 font-light">Your partner for digital innovation.</p>
-            </div>
-            <div>
-              <h4 className="text-lg font-semibold mb-4 text-white">Quick Links</h4>
-              <ul className="space-y-3">
-                {['home', 'products', 'blog', 'contact'].map((item) => (
-                  <li key={item}>
-                    <a href={`#${item}`} className="text-gray-400 hover:text-white transition-colors duration-300">
-                      {item.charAt(0).toUpperCase() + item.slice(1)}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-lg font-semibold mb-4 text-white">Contact</h4>
-              <ul className="space-y-3 text-gray-400">
-                <li>globaldigistore.mdg@gmail.com</li>
-                <li>(+261) 32 21 312 46</li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-lg font-semibold mb-4 text-white">Follow Us</h4>
-              <div className="flex justify-center md:justify-start flex-wrap gap-4">
-                <a href="https://www.facebook.com/globaldigistore.mdg" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-transform duration-500 hover:scale-125">
-                  <Facebook className="h-6 w-6" />
-                </a>
-                <a href="https://twitter.com/globaldigistore" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-transform duration-500 hover:scale-125">
-                  <Twitter className="h-6 w-6" />
-                </a>
-                <a href="https://instagram.com/globaldigistore" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-transform duration-500 hover:scale-125">
-                  <Instagram className="h-6 w-6" />
-                </a>
-                <a href="https://tiktok.com/@globaldigistore" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-transform duration-500 hover:scale-125">
-                  <Video className="h-6 w-6" />
-                </a>
-                <a href="https://t.me/globaldigistore" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-transform duration-500 hover:scale-125">
-                  <Send className="h-6 w-6" />
-                </a>
-              </div>
-            </div>
-          </div>
-          <div className="border-t border-gray-800 mt-10 pt-8 text-center text-gray-400">
-            <p>© 2024 GlobalDigiStore. All rights reserved.</p>
-          </div>
+<footer className="bg-gray-900 text-white py-12">
+  <div className="container mx-auto px-6">
+    <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
+      <div>
+        <div className="flex items-center mb-4">
+          <ShoppingCart className="h-10 w-10 text-purple-400 transition-transform duration-500 hover:scale-110 hover:rotate-12" />
+          <span className="ml-3 text-2xl font-extrabold">GlobalDigiStore</span>
         </div>
-      </footer>
+        <p className="text-gray-400 font-light">Your partner for digital innovation.</p>
+      </div>
+      <div>
+        <h4 className="text-lg font-semibold mb-4 text-white">Quick Links</h4>
+        <ul className="space-y-3">
+          {['home', 'products', 'blog', 'contact'].map((item) => (
+            <li key={item}>
+              <a href={`#${item}`} className="text-gray-400 hover:text-white transition-colors duration-300">
+                {item.charAt(0).toUpperCase() + item.slice(1)}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div>
+        <h4 className="text-lg font-semibold mb-4 text-white">Contact</h4>
+        <ul className="space-y-3 text-gray-400">
+          <li>globaldigistore.mdg@gmail.com</li>
+          <li>(+261) 32 21 312 46</li>
+        </ul>
+      </div>
+      <div>
+        <h4 className="text-lg font-semibold mb-4 text-white">Follow Us</h4>
+        <div className="flex space-x-6 justify-start">
+          <a 
+            href="https://x.com/GlobalDigiStore" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="text-gray-400 hover:text-purple-600 transition-transform duration-300 transform hover:scale-110"
+            aria-label="Twitter"
+          >
+            <FaTwitter className="h-8 w-8" /> {/* Remplace FaXTwitter par FaTwitter si besoin */}
+          </a>
+          <a 
+            href="https://instagram.com/GlobalDigiStore" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="text-gray-400 hover:text-purple-600 transition-transform duration-300 transform hover:scale-110"
+            aria-label="Instagram"
+          >
+            <FaInstagram className="h-8 w-8" />
+          </a>
+          <a 
+            href="https://tiktok.com/@gbl_digistore" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="text-gray-400 hover:text-purple-600 transition-transform duration-300 transform hover:scale-110"
+            aria-label="TikTok"
+          >
+            <FaTiktok className="h-8 w-8" />
+          </a>
+          <a 
+            href="https://facebook.com/globaldigistore.mdg" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="text-gray-400 hover:text-purple-600 transition-transform duration-300 transform hover:scale-110"
+            aria-label="Facebook"
+          >
+            <FaFacebook className="h-8 w-8" />
+          </a>
+          <a 
+            href="https://youtube.com/@globaldigitech-mdg" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="text-gray-400 hover:text-purple-600 transition-transform duration-300 transform hover:scale-110"
+            aria-label="YouTube"
+          >
+            <FaYoutube className="h-8 w-8" />
+          </a>
+        </div>
+      </div>
+    </div>
+    <div className="border-t border-gray-800 mt-10 pt-8 text-center text-gray-400">
+      <p>© 2024 GlobalDigiStore. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
 
       {/* Preview Modal */}
       {showPreviewModal && selectedProduct && (
@@ -1214,129 +1252,131 @@ function App() {
 
       {/* Payment Instructions Modal */}
       {showPaymentInstructions && lastOrder && (
-  <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
-    <div className="bg-white rounded-3xl p-6 max-w-2xl w-full max-h-[65vh] overflow-y-auto shadow-2xl backdrop-blur-md">
-      <div className="flex justify-between items-center mb-4">
-        <h3 className="text-2xl font-bold text-gray-800">Payment Instructions</h3>
-        <button
-          onClick={() => setShowPaymentInstructions(null)}
-          className="text-gray-500 hover:text-gray-700 transition-colors duration-300"
-        >
-          <X className="h-6 w-6" />
-        </button>
-      </div>
-      <div className="bg-gray-50 p-4 rounded-xl shadow-inner">
-        <div className="text-center mb-4">
-          <h4 className="text-xl font-semibold text-purple-600">GlobalDigiStore Invoice</h4>
-          <p className="text-gray-600 mt-1">Thank you for your order!</p>
+        <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
+          <div className="bg-white rounded-3xl p-6 max-w-2xl w-full max-h-[65vh] overflow-y-auto shadow-2xl backdrop-blur-md">
+            <div className="flex justify-between items-center mb-4">
+              <h3 className="text-2xl font-bold text-gray-800">Payment Instructions</h3>
+              <button
+                onClick={() => setShowPaymentInstructions(null)}
+                className="text-gray-500 hover:text-gray-700 transition-colors duration-300"
+              >
+                <X className="h-6 w-6" />
+              </button>
+            </div>
+            <div className="bg-gray-50 p-4 rounded-xl shadow-inner">
+              <div className="text-center mb-4">
+                <h4 className="text-xl font-semibold text-purple-600">GlobalDigiStore Invoice</h4>
+                <p className="text-gray-600 mt-1">Thank you for your order!</p>
+              </div>
+              <div className="border-t border-b border-gray-300 py-3 mb-4">
+                <p className="text-base text-gray-800 font-medium">Order Summary:</p>
+                <ul className="list-disc list-inside text-gray-600 mt-1">
+                  {lastOrder.items.map((item, index) => (
+                    <li key={index}>{item.title} - ${item.price}</li>
+                  ))}
+                </ul>
+                <p className="text-lg font-bold text-gray-800 mt-2">
+                  Total: ${lastOrder.total}
+                </p>
+              </div>
+              <div>
+                <p className="text-base font-medium text-gray-800 mb-1">Payment Instructions:</p>
+                <p className="text-gray-700 whitespace-pre-wrap bg-white p-3 rounded-lg shadow-sm markdown text-sm">
+                  {showPaymentInstructions.split('**').map((part, index) =>
+                    index % 2 === 1 ? <strong key={index}>{part}</strong> : part
+                  )}
+                </p>
+                <p className="text-xs text-gray-500 mt-2">
+                  After sending the payment, your products will be delivered to {paymentForm.deliveryEmail} within 24-48 hours upon confirmation.
+                </p>
+                <p className="text-xs text-red-600 font-semibold mt-1">
+                  Important: Click "I’ve Paid" ONLY if you have already completed the payment as instructed above. If you haven’t paid yet, click "Cancel" to close this window.
+                </p>
+              </div>
+            </div>
+            <div className="mt-4 flex justify-center space-x-4">
+              <button
+                onClick={() => setShowPaymentInstructions(null)}
+                className="bg-gray-500 text-white py-2 px-6 rounded-full hover:bg-gray-600 transition-all duration-300 font-semibold"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={handlePaymentConfirmation}
+                className="bg-gradient-to-r from-purple-600 to-orange-400 text-white py-2 px-6 rounded-full hover:shadow-xl hover:scale-105 transition-all duration-300 font-semibold"
+              >
+                I’ve Paid
+              </button>
+            </div>
+          </div>
         </div>
-        <div className="border-t border-b border-gray-300 py-3 mb-4">
-          <p className="text-base text-gray-800 font-medium">Order Summary:</p>
-          <ul className="list-disc list-inside text-gray-600 mt-1">
-            {lastOrder.items.map((item, index) => (
-              <li key={index}>{item.title} - ${item.price}</li>
-            ))}
-          </ul>
-          <p className="text-lg font-bold text-gray-800 mt-2">
-            Total: ${lastOrder.total}
-          </p>
-        </div>
-        <div>
-          <p className="text-base font-medium text-gray-800 mb-1">Payment Instructions:</p>
-          <p className="text-gray-700 whitespace-pre-wrap bg-white p-3 rounded-lg shadow-sm markdown text-sm">
-            {showPaymentInstructions.split('**').map((part, index) =>
-              index % 2 === 1 ? <strong key={index}>{part}</strong> : part
-            )}
-          </p>
-          <p className="text-xs text-gray-500 mt-2">
-            After sending the payment, your products will be delivered to {paymentForm.deliveryEmail} within 24-48 hours upon confirmation.
-          </p>
-          <p className="text-xs text-red-600 font-semibold mt-1">
-            Important: Click "I’ve Paid" ONLY if you have already completed the payment as instructed above. If you haven’t paid yet, click "Cancel" to close this window.
-          </p>
-        </div>
-      </div>
-      <div className="mt-4 flex justify-center space-x-4">
-        <button
-          onClick={() => setShowPaymentInstructions(null)}
-          className="bg-gray-500 text-white py-2 px-6 rounded-full hover:bg-gray-600 transition-all duration-300 font-semibold"
-        >
-          Cancel
-        </button>
-        <button
-          onClick={handlePaymentConfirmation}
-          className="bg-gradient-to-r from-purple-600 to-orange-400 text-white py-2 px-6 rounded-full hover:shadow-xl hover:scale-105 transition-all duration-300 font-semibold"
-        >
-          I’ve Paid
-        </button>
-      </div>
-    </div>
-  </div>
-)}
+      )}
+
+      {/* Blog Modal */}
       {showBlogModal && selectedPost && (
-  <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
-    <div className="bg-white rounded-3xl p-8 max-w-3xl w-full max-h-[80vh] overflow-y-auto shadow-2xl backdrop-blur-md">
-      <div className="flex justify-between items-center mb-6">
-        <h3 className="text-2xl font-bold text-gray-800">{selectedPost.title}</h3>
-        <button
-          onClick={() => setShowBlogModal(false)}
-          className="text-gray-500 hover:text-gray-700 transition-colors duration-300"
-        >
-          <X className="h-6 w-6" />
-        </button>
-      </div>
-      <img 
-        src={selectedPost.image} 
-        alt={`${selectedPost.title} Image`} 
-        className="w-full h-64 object-cover rounded-xl mb-6 shadow-md"
-      />
-      <div className="flex items-center text-sm text-gray-500 mb-6">
-        <span>{selectedPost.date}</span>
-        <span className="mx-2">•</span>
-        <span>{selectedPost.category}</span>
-        <span className="mx-2">•</span>
-        <span>5 min de lecture</span>
-        <span className="mx-2">•</span>
-        <span>Par GlobalDigiStore</span>
-      </div>
-      <div className="text-gray-600 font-light whitespace-pre-wrap">
-        {selectedPost.content.split('\n').map((line: string, index: number) => {
-          if (line.startsWith('### ')) {
-            return <h3 key={index} className="text-xl font-semibold text-gray-800 mt-6 mb-2">{line.slice(4)}</h3>;
-          } else if (line.startsWith('**')) {
-            return <p key={index} className="font-bold mt-4 mb-2">{line.slice(2, -2)}</p>;
-          } else if (line.startsWith('- ') || line.startsWith('* ')) {
-            return <li key={index} className="ml-4 mb-2 list-disc">{line.slice(2)}</li>;
-          } else if (line.trim()) {
-            return <p key={index} className="mb-4">{line}</p>;
-          }
-          return null;
-        })}
-      </div>
-      <div className="mt-6 text-center">
-  <p className="text-gray-600 mb-4">
-    Envie de dompter l’IA ? Découvrez notre eBook{' '}
-    <button
-      onClick={() => {
-        setShowBlogModal(false); // Ferme la modale
-        document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' }); // Défile vers #products
-      }}
-      className="text-purple-600 hover:underline focus:outline-none"
-    >
-      Maîtriser l’IA 2025
-    </button>{' '}
-    !
-  </p>
-  <button 
-    onClick={() => setShowBlogModal(false)}
-    className="text-purple-600 hover:text-purple-700 font-semibold transition-colors duration-300 flex items-center mx-auto"
-  >
-    Retour au blog <ArrowRight className="ml-2 h-4 w-4" />
-  </button>
-</div>
-    </div>
-  </div>
-)}
+        <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
+          <div className="bg-white rounded-3xl p-8 max-w-3xl w-full max-h-[80vh] overflow-y-auto shadow-2xl backdrop-blur-md">
+            <div className="flex justify-between items-center mb-6">
+              <h3 className="text-2xl font-bold text-gray-800">{selectedPost.title}</h3>
+              <button
+                onClick={() => setShowBlogModal(false)}
+                className="text-gray-500 hover:text-gray-700 transition-colors duration-300"
+              >
+                <X className="h-6 w-6" />
+              </button>
+            </div>
+            <img 
+              src={selectedPost.image} 
+              alt={`${selectedPost.title} Image`} 
+              className="w-full h-64 object-cover rounded-xl mb-6 shadow-md"
+            />
+            <div className="flex items-center text-sm text-gray-500 mb-6">
+              <span>{selectedPost.date}</span>
+              <span className="mx-2">•</span>
+              <span>{selectedPost.category}</span>
+              <span className="mx-2">•</span>
+              <span>5 min de lecture</span>
+              <span className="mx-2">•</span>
+              <span>Par GlobalDigiStore</span>
+            </div>
+            <div className="text-gray-600 font-light whitespace-pre-wrap">
+              {selectedPost.content.split('\n').map((line: string, index: number) => {
+                if (line.startsWith('### ')) {
+                  return <h3 key={index} className="text-xl font-semibold text-gray-800 mt-6 mb-2">{line.slice(4)}</h3>;
+                } else if (line.startsWith('**')) {
+                  return <p key={index} className="font-bold mt-4 mb-2">{line.slice(2, -2)}</p>;
+                } else if (line.startsWith('- ') || line.startsWith('* ')) {
+                  return <li key={index} className="ml-4 mb-2 list-disc">{line.slice(2)}</li>;
+                } else if (line.trim()) {
+                  return <p key={index} className="mb-4">{line}</p>;
+                }
+                return null;
+              })}
+            </div>
+            <div className="mt-6 text-center">
+              <p className="text-gray-600 mb-4">
+                Envie de dompter l’IA ? Découvrez notre eBook{' '}
+                <button
+                  onClick={() => {
+                    setShowBlogModal(false);
+                    document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className="text-purple-600 hover:underline focus:outline-none"
+                >
+                  Maîtriser l’IA 2025
+                </button>{' '}
+                !
+              </p>
+              <button 
+                onClick={() => setShowBlogModal(false)}
+                className="text-purple-600 hover:text-purple-700 font-semibold transition-colors duration-300 flex items-center mx-auto"
+              >
+                Retour au blog <ArrowRight className="ml-2 h-4 w-4" />
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
