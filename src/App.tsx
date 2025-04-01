@@ -1,4 +1,4 @@
-import React from 'react';
+ import React from 'react';
 import { Menu, ShoppingCart, Mail, ArrowRight, Book, Palette, Layout, X, ChevronLeft, ChevronRight, Send, Video, Eye } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import emailjs from '@emailjs/browser';
@@ -50,7 +50,7 @@ function App() {
   const products = [
     {
       title: "7 jours hors écran",
-      description: "7 jours pour décrocher et respirer enfin !",
+      description: "Déconnectez-vous des écrans en 7 jours et retrouvez focus et sérénité. Guide simple et motivant.",
       image: "/assets/7j-hors-ecran-prnpcl.png",
       price: 5,
       format: "PDF",
@@ -77,27 +77,33 @@ function App() {
       }
     },
     {
-      title: 'Exotic Recipes Book',
-      description: 'Discover unique flavors from around the world',
-      image: 'https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&q=80&w=400',
-      price: 7,
-      format: 'PDF',
-      category: 'ebooks',
+      title: "5 Outils IA Gratuits pour Débutants",
+      description: "Boostez vos projets avec ces 5 outils IA gratuits et faciles à prendre en main. Guide pratique pour débutants !",
+      image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&q=80&w=800", // Couverture principale
+      price: 3,
+      format: "PDF",
+      category: "ebooks",
+      languages: ["Français", "Anglais"],
       preview: {
-        description: 'A complete guide to explore global flavors with over 50 authentic recipes.',
+        description: "L’IA n’est pas réservée aux experts ! Ce guide vous présente 5 outils gratuits pour automatiser vos tâches, créer du contenu ou analyser vos données, sans aucune compétence technique. Parfait pour débutants ou pros en quête de simplicité.",
         chapters: [
-          'Introduction to Exotic Cuisine',
-          'Essential Spices',
-          'Asian Recipes',
-          'African Recipes',
-          'South American Recipes'
+          "Introduction : L’IA à portée de main",
+          "Outil 1 : ChatGPT – Votre assistant personnel",
+          "Outil 2 : Canva IA – Designs en un clic",
+          "Outil 3 : Grammarly – Textes parfaits sans effort",
+          "Outil 4 : Zapier – Automatisation facile",
+          "Outil 5 : Google Trends – Insights gratuits",
+          "Conclusion : Lancez-vous dès aujourd’hui !"
         ],
-        sample: `Chapter 1: Essential Spices\nSpices are the heart of exotic cuisine...`
+        sample: "Vous rêvez d’un assistant qui rédige vos emails ou d’un outil qui crée des visuels pro en 5 minutes ? Avec ces 5 outils IA gratuits, c’est possible, même sans expérience. Exemple : ChatGPT peut écrire un post Twitter en 10 secondes. Essayez, c’est gratuit !",
+        coverImage: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&q=80&w=800", // Image de couverture
+        contentPreviewImage: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=800", // Aperçu du contenu
+        goalImage: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&q=80&w=800" // Image d’objectif
       }
     },
     {
       title: "Maîtriser l’IA pour Booster Votre Business en 2025",
-      description: "Transformez l’IA en levier de succès dès aujourd’hui !",
+      description: "Apprenez à utiliser l’IA pour automatiser votre business et gagner 5h/semaine. 30 pages pratiques, débutants bienvenus !",
       image: "/assets/master-ia-2025-3d.jpg",
       price: 9,
       format: "PDF",
