@@ -339,14 +339,7 @@ function App() {
   }, []);
 
   // Fonction pour masquer l'email en production
-  const getProtectedEmail = (email: string) => {
-    if (import.meta.env.MODE === 'production') { // MODE remplace NODE_ENV dans Vite
-      return email.replace('@', '[at]').replace(/\./g, '[dot]');
-    }
-    return email; // En dev, on affiche l'email tel quel
-  };
-
-  const contactEmail = getProtectedEmail(PROTECTED_EMAIL);
+  const contactEmail = PROTECTED_EMAIL; // On utilise directement la variable sans transformation
 
   const stats = [
     { value: '10,000+', label: 'Users' },
