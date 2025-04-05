@@ -507,7 +507,7 @@ function App() {
         to_email: PROTECTED_EMAIL,
         message: `New Order Payment:
           Cart Details:
-          ${cartDetails} // Utilisé ici, donc pas vraiment inutilisé
+          ${cartDetails} 
           Total: $${total}
           ${paymentDetails}`
       })
@@ -747,31 +747,50 @@ function App() {
                     <p>Format: {product.format}</p>
                     {product.languages && <p>Available in: {product.languages.join(', ')}</p>}
                   </div>
-                  <div className="flex items-center space-x-3">
-                    <button
-                      onClick={() => handlePreview(product)}
-                      className={`inline-block bg-${categoryColor}/10 text-${categoryColor} hover:bg-${categoryColor}/20 font-bold py-2 px-4 rounded-full transition-all duration-300 flex items-center`}
-                      aria-label={`Prévisualiser ${product.title}`}
-                    >
-                      <Eye className="h-5 w-5 mr-2" /> View Preview
-                    </button>
-                    {product.price !== 'On Request' && (
+                  <div className="flex items-center space-x-3 relative">
+  {/* Badge "Coming Soon" pour templates et graphics */}
+  {(product.category === 'templates' || product.category === 'graphics') && (
+    <span className="absolute -top-2 -right-2 bg-yellow-400 text-gray-800 text-xs font-semibold px-2 py-1 rounded-full shadow-md">
+      Coming Soon
+    </span>
+  )}
+
+  {/* Bouton "View Preview" */}
   <button
-    onClick={() => {
-      addToCart(product);
-      setAddedProductId(product.title);
-      setTimeout(() => setAddedProductId(null), 1000);
-    }}
-    className={`bg-gradient-to-r from-purple-600 to-purple-800 text-white text-sm font-semibold py-2 px-4 rounded-full hover:shadow-md hover:scale-105 transition-all duration-300 whitespace-nowrap ${
-      addedProductId === product.title ? 'animate-bounce' : ''
+    onClick={() => product.category !== 'templates' && product.category !== 'graphics' && handlePreview(product)}
+    className={`inline-block bg-${categoryColor}/10 text-${categoryColor} font-bold py-2 px-4 rounded-full transition-all duration-300 flex items-center ${
+      (product.category === 'templates' || product.category === 'graphics')
+        ? 'opacity-50 cursor-not-allowed'
+        : 'hover:bg-' + categoryColor + '/20'
     }`}
-    aria-label={`${translations.addToCart[locale]} ${product.title}`} // Traduction dans aria-label aussi
+    aria-label={`Prévisualiser ${product.title}`}
+    disabled={product.category === 'templates' || product.category === 'graphics'}
   >
-    {translations.addToCart[locale]}
+    <Eye className="h-5 w-5 mr-2" /> View Preview
   </button>
-)}
-                    
-                  </div>
+
+  {/* Bouton "Add to Cart" */}
+  {product.price !== 'On Request' && (
+    <button
+      onClick={() =>
+        product.category !== 'templates' && product.category !== 'graphics' && (
+          addToCart(product),
+          setAddedProductId(product.title),
+          setTimeout(() => setAddedProductId(null), 1000)
+        )
+      }
+      className={`bg-gradient-to-r from-purple-600 to-purple-800 text-white text-sm font-semibold py-2 px-4 rounded-full transition-all duration-300 whitespace-nowrap ${
+        product.category === 'templates' || product.category === 'graphics'
+          ? 'opacity-50 cursor-not-allowed'
+          : 'hover:shadow-md hover:scale-105 ' + (addedProductId === product.title ? 'animate-bounce' : '')
+      }`}
+      aria-label={`${translations.addToCart[locale]} ${product.title}`}
+      disabled={product.category === 'templates' || product.category === 'graphics'}
+    >
+      {translations.addToCart[locale]}
+    </button>
+  )}
+</div>
                   <div className="mt-4 flex items-center justify-between">
                     <span className="text-2xl font-bold text-gray-900">
                       {product.price === 'On Request' ? product.price : `$${product.price}`}
