@@ -69,7 +69,15 @@ const STATIC_PRODUCTS: Product[] = [
     languages: ["Français", "Anglais"],
     preview: {
       description: "Déconnecte-toi des écrans et reconnecte-toi à toi-même en seulement 7 jours ! ...",
-      chapters: ["Introduction : Pourquoi décrocher ?"],
+      chapters: ["Avant de commencer :Les écrans et nous ",
+                "Jour 1 : Matin sans scroll",
+                "Jour 2 : Une heure analogique", 
+                "Jour 3 : Repas déconnecté",
+                "Jour 4 : Pause nature" , 
+                "Jour 5 : Mono-tâche" , 
+                "Jour 6 : Grand ménage numérique",  
+                "Jour 7 : Journée hors écran", 
+                ],
       sample: "Tu te réveilles, et bam, ton téléphone est déjà dans ta main. ...",
       images: [
         "/assets/7j-hors-ecran-cover.png",
