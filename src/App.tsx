@@ -59,33 +59,7 @@ interface BlogPost {
 
 // Données statiques
 const STATIC_PRODUCTS: Product[] = [
-  {
-    title: "7 jours hors écran",
-    description: "Déconnectez-vous des écrans en 7 jours et retrouvez focus et sérénité. Guide simple et motivant.",
-    image: "/assets/7j-hors-ecran-prnpcl.png",
-    price: 5,
-    format: "PDF",
-    category: "ebooks",
-    languages: ["Français", "Anglais"],
-    preview: {
-      description: "Déconnecte-toi des écrans et reconnecte-toi à toi-même en seulement 7 jours ! ...",
-      chapters: ["Avant de commencer :Les écrans et nous ",
-                "Jour 1 : Matin sans scroll",
-                "Jour 2 : Une heure analogique", 
-                "Jour 3 : Repas déconnecté",
-                "Jour 4 : Pause nature" , 
-                "Jour 5 : Mono-tâche" , 
-                "Jour 6 : Grand ménage numérique",  
-                "Jour 7 : Journée hors écran", 
-                ],
-      sample: "Tu te réveilles, et bam, ton téléphone est déjà dans ta main. ...",
-      images: [
-        "/assets/7j-hors-ecran-cover.png",
-        "/assets/7j-hors-ecran-content.png",
-        "/assets/7j-hors-ecran-goal.png"
-      ]
-    }
-  },
+  
   {
     title: "5 Outils IA Gratuits pour Débutants",
     description: "Boostez vos projets avec ces 5 outils IA gratuits et faciles à prendre en main. Guide pratique pour débutants !",
@@ -110,6 +84,33 @@ const STATIC_PRODUCTS: Product[] = [
         "/assets/5outils-ia-cover.png",
         "/assets/5outils-ia-content.png",
         "/assets/5outils-ia-goal.png",
+      ]
+    }
+  },
+  {
+    title: "7 jours hors écran",
+    description: "Déconnectez-vous des écrans en 7 jours et retrouvez focus et sérénité. Guide simple et motivant.",
+    image: "/assets/7j-hors-ecran-prnpcl.png",
+    price: 5,
+    format: "PDF",
+    category: "ebooks",
+    languages: ["Français", "Anglais"],
+    preview: {
+      description: "Déconnecte-toi des écrans et reconnecte-toi à toi-même en seulement 7 jours ! ...",
+      chapters: ["Avant de commencer :Les écrans et nous ",
+                "Jour 1 : Matin sans scroll",
+                "Jour 2 : Une heure analogique", 
+                "Jour 3 : Repas déconnecté",
+                "Jour 4 : Pause nature" , 
+                "Jour 5 : Mono-tâche" , 
+                "Jour 6 : Grand ménage numérique",  
+                "Jour 7 : Journée hors écran", 
+                ],
+      sample: "Tu te réveilles, et bam, ton téléphone est déjà dans ta main. ...",
+      images: [
+        "/assets/7j-hors-ecran-cover.png",
+        "/assets/7j-hors-ecran-content.png",
+        "/assets/7j-hors-ecran-goal.png"
       ]
     }
   },
@@ -144,7 +145,7 @@ const STATIC_PRODUCTS: Product[] = [
   {
     title: "10 Astuces pour Automatiser Votre Vie Quotidienne",
     description: "Gagnez du temps avec ces 10 astuces simples pour automatiser vos tâches quotidiennes. Guide pratique pour débutants, sans compétences tech requises !",
-    image: "/assets/cover-automatisation-quotidienne.png",
+    image: "/assets/10-astuces.png",
     price: 4,
     format: "PDF",
     category: "ebooks",
@@ -167,9 +168,9 @@ const STATIC_PRODUCTS: Product[] = [
       ],
       sample: "Vous perdez 2 heures par semaine à envoyer des emails ? Avec l’astuce 1, configurez Gmail pour répondre automatiquement. Exemple : ‘Merci pour votre message, je reviens vers vous sous 24h.’ C’est gratuit et prend 5 minutes. Prêt à gagner du temps ?",
       images: [
-        "/assets/cover-automatisation-quotidienne.png",
-        "/assets/content-automatisation-quotidienne.png",
-        "/assets/goal-automatisation-quotidienne.png"
+        "/assets/10-astuces-1.png",
+        "/assets/10-astuces-2.png",
+        "/assets/10-astuces-3.png",
       ]
     }
   },
@@ -246,7 +247,7 @@ const STATIC_BLOG_POSTS: BlogPost[] = [
     date: "March 29, 2025",
     category: "Technology",
     description: "Un tour d’horizon des progrès de l’IA en 2025 et leur impact pour vous.",
-    image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&q=80&w=400",
+    image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&q=80&w=600",
     content: `
       <h2 style="font-weight: bold; font-size: 2rem; margin-bottom: 1.5rem; background: linear-gradient(to right, #9333ea, #f97316); -webkit-background-clip: text; color: transparent;">L’IA en 2025 : Les Dernières Avancées qui Vont Changer Votre Vie</h2>
       
@@ -257,15 +258,15 @@ const STATIC_BLOG_POSTS: BlogPost[] = [
       <blockquote style="background: #f9fafb; border-left: 4px solid #9333ea; padding: 1rem; margin: 1rem 0; font-style: italic; color: #4b5563;">
         Saviez-vous qu’en mars 2025, une IA a composé une chanson entière en moins de 10 secondes pour un élève de 14 ans ?
       </blockquote>
-      <p style="color: #4b5563; line-height: 1.5; margin-bottom: 1rem;">L’intelligence artificielle n’est plus une promesse futuriste : elle <strong style="color: #1f2937;">redéfinit notre quotidien</strong>. De la <em style="color: #7e22ce;">création de contenu</em> à l’<u style="text-decoration-color: #f97316;">automatisation des affaires</u>, les avancées de 2025 sont là pour rester. Dans cet article, nous explorons les <strong style="color: #1f2937;">dernières nouvelles</strong> de l’IA et comment elles peuvent transformer <em style="color: #7e22ce;">vos projets</em>.</p>
+      <p style="color: #4b5563; line-height: 1.5; margin-bottom: 1rem;">L’intelligence artificielle n’est plus une promesse futuriste : elle <strong style="color: #1f2937;">redéfinit notre quotidien</strong>. De la <em style="color: #7e22ce;">création de contenu</em> à l’<u style="text-decoration-color: #a78bfa; text-decoration-thickness: 1px;">automatisation des affaires</u>, les avancées de 2025 sont là pour rester. Dans cet article, nous explorons les <strong style="color: #1f2937;">dernières nouvelles</strong> de l’IA et comment elles peuvent transformer <em style="color: #7e22ce;">vos projets</em>.</p>
 
       <hr style="border: 0; height: 2px; background: linear-gradient(to right, #9333ea, #f97316); margin: 2rem 0;" />
 
       <h3 style="font-weight: bold; font-size: 1.5rem; color: #1f2937; margin: 2rem 0 0.75rem;">Les grandes avancées IA en 2025</h3>
       <p style="color: #4b5563; line-height: 1.5; margin-bottom: 1rem;"><strong style="color: #1f2937;">1. Une IA qui pense comme nous</strong><br>
-      <strong style="color: #1f2937;">Google</strong> a lancé <em style="color: #7e22ce;">Gemini 2.5</em>, un modèle qui <strong style="color: #1f2937;">raisonne</strong> sur des problèmes complexes, surpassant ses prédécesseurs en <u style="text-decoration-color: #f97316;">mathématiques</u> et <u style="text-decoration-color: #f97316;">sciences</u>. Pendant ce temps, en Chine, <em style="color: #7e22ce;">Zhipu AI</em> rend ses modèles <strong style="color: #1f2937;">open-source</strong>, accélérant l’<em style="color: #7e22ce;">innovation mondiale</em>.</p>
+      <strong style="color: #1f2937;">Google</strong> a lancé <em style="color: #7e22ce;">Gemini 2.5</em>, un modèle qui <strong style="color: #1f2937;">raisonne</strong> sur des problèmes complexes, surpassant ses prédécesseurs en <u style="text-decoration-color: #a78bfa; text-decoration-thickness: 1px;">mathématiques</u> et <u style="text-decoration-color: #a78bfa; text-decoration-thickness: 1px;">sciences</u>. Pendant ce temps, en Chine, <em style="color: #7e22ce;">Zhipu AI</em> rend ses modèles <strong style="color: #1f2937;">open-source</strong>, accélérant l’<em style="color: #7e22ce;">innovation mondiale</em>.</p>
       <p style="color: #4b5563; line-height: 1.5; margin-bottom: 1rem;"><strong style="color: #1f2937;">2. Des puces plus puissantes</strong><br>
-      <strong style="color: #1f2937;">NVIDIA Blackwell</strong>, lancé récemment, offre <strong style="color: #1f2937;">40 fois la performance</strong> des anciennes puces <em style="color: #7e22ce;">Hopper</em>. <strong style="color: #1f2937;">TSMC</strong>, de son côté, prépare des <em style="color: #7e22ce;">puces 2nm</em> pour fin 2025, rendant l’IA plus <u style="text-decoration-color: #f97316;">rapide</u> et <u style="text-decoration-color: #f97316;">économe</u>.</p>
+      <strong style="color: #1f2937;">NVIDIA Blackwell</strong>, lancé récemment, offre <strong style="color: #1f2937;">40 fois la performance</strong> des anciennes puces <em style="color: #7e22ce;">Hopper</em>. <strong style="color: #1f2937;">TSMC</strong>, de son côté, prépare des <em style="color: #7e22ce;">puces 2nm</em> pour fin 2025, rendant l’IA plus <u style="text-decoration-color: #a78bfa; text-decoration-thickness: 1px;">rapide</u> et <u style="text-decoration-color: #a78bfa; text-decoration-thickness: 1px;">économe</u>.</p>
       <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=600" alt="Circuit électronique illustrant les puces IA avancées" style="max-width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);" />
       <figcaption style="text-align: center; color: #6b7280; font-size: 0.9rem; margin-bottom: 1rem;">Les puces de nouvelle génération au cœur de l’IA 2025.</figcaption>
       <p style="color: #4b5563; line-height: 1.5; margin-bottom: 1rem;"><strong style="color: #1f2937;">3. L’IA dans votre poche</strong><br>
@@ -274,11 +275,11 @@ const STATIC_BLOG_POSTS: BlogPost[] = [
       <hr style="border: 0; height: 2px; background: linear-gradient(to right, #9333ea, #f97316); margin: 2rem 0;" />
 
       <h3 style="font-weight: bold; font-size: 1.5rem; color: #1f2937; margin: 2rem 0 0.75rem;">Impact pour les créateurs et entrepreneurs</h3>
-      <p style="color: #4b5563; line-height: 1.5; margin-bottom: 1rem;">Ces avancées ne sont pas juste <em style="color: #7e22ce;">techniques</em> : elles sont <strong style="color: #1f2937;">pour vous</strong>. Une IA générative peut <u style="text-decoration-color: #f97316;">rédiger vos posts</u> ou <u style="text-decoration-color: #f97316;">créer des designs</u> en un instant. Nos eBooks, comme <em style="color: #7e22ce;">Maîtriser l’IA pour Booster Votre Business en 2025</em>, vous guident pour <strong style="color: #1f2937;">tirer parti</strong> de ces outils dès aujourd’hui. Que vous soyez <em style="color: #7e22ce;">entrepreneur</em> ou <em style="color: #7e22ce;">créateur</em>, <strong style="color: #1f2937;">2025</strong> est votre année pour <u style="text-decoration-color: #f97316;">briller</u> avec l’IA.</p>
+      <p style="color: #4b5563; line-height: 1.5; margin-bottom: 1rem;">Ces avancées ne sont pas juste <em style="color: #7e22ce;">techniques</em> : elles sont <strong style="color: #1f2937;">pour vous</strong>. Une IA générative peut <u style="text-decoration-color: #a78bfa; text-decoration-thickness: 1px;">rédiger vos posts</u> ou <u style="text-decoration-color: #a78bfa; text-decoration-thickness: 1px;">créer des designs</u> en un instant. Nos eBooks, comme <em style="color: #7e22ce;">Maîtriser l’IA pour Booster Votre Business en 2025</em>, vous guident pour <strong style="color: #1f2937;">tirer parti</strong> de ces outils dès aujourd’hui. Que vous soyez <em style="color: #7e22ce;">entrepreneur</em> ou <em style="color: #7e22ce;">créateur</em>, <strong style="color: #1f2937;">2025</strong> est votre année pour <u style="text-decoration-color: #a78bfa; text-decoration-thickness: 1px;">briller</u> avec l’IA.</p>
 
       <h3 style="font-weight: bold; font-size: 1.5rem; color: #1f2937; margin: 2rem 0 0.75rem;">Conclusion</h3>
-      <p style="color: #4b5563; line-height: 1.5; margin-bottom: 1rem;">L’IA en 2025, c’est plus de <strong style="color: #1f2937;">puissance</strong>, d’<em style="color: #7e22ce;">accessibilité</em> et de <u style="text-decoration-color: #f97316;">possibilités</u>. <em style="color: #7e22ce;">Que pensez-vous de ces évolutions ?</em> Dites-le-nous en commentaire ! Et si vous voulez <strong style="color: #1f2937;">dompter cette révolution</strong>, jetez un œil à nos <em style="color: #7e22ce;">eBooks</em>. L’IA n’est pas une menace, c’est votre <strong style="color: #1f2937;">futur allié</strong> !</p>
-      <img src="https://images.unsplash.com/photo-1556740738-6bf283d6e9b9?auto=format&fit=crop&q=80&w=600" alt="Humain interagissant avec la technologie IA" style="max-width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);" />
+      <p style="color: #4b5563; line-height: 1.5; margin-bottom: 1rem;">L’IA en 2025, c’est plus de <strong style="color: #1f2937;">puissance</strong>, d’<em style="color: #7e22ce;">accessibilité</em> et de <u style="text-decoration-color: #a78bfa; text-decoration-thickness: 1px;">possibilités</u>. <em style="color: #7e22ce;">Que pensez-vous de ces évolutions ?</em> Dites-le-nous en commentaire ! Et si vous voulez <strong style="color: #1f2937;">dompter cette révolution</strong>, jetez un œil à nos <em style="color: #7e22ce;">eBooks</em>. L’IA n’est pas une menace, c’est votre <strong style="color: #1f2937;">futur allié</strong> !</p>
+      <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&q=80&w=600" alt="Humain interagissant avec la technologie IA" style="max-width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);" />
       <figcaption style="text-align: center; color: #6b7280; font-size: 0.9rem; margin-bottom: 1rem;">L’IA au service des créateurs et entrepreneurs en 2025.</figcaption>
     `
   },
@@ -287,7 +288,7 @@ const STATIC_BLOG_POSTS: BlogPost[] = [
     date: "April 13, 2025",
     category: "Économie et Géopolitique",
     description: "Une analyse des tensions économiques entre la Chine et les États-Unis en 2025, des tarifs douaniers aux impacts sur les entrepreneurs et les consommateurs.",
-    image: "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?auto=format&fit=crop&q=80&w=400",
+    image: "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?auto=format&fit=crop&q=80&w=600",
     content: `
       <h2 style="font-weight: bold; font-size: 2rem; margin-bottom: 1.5rem; background: linear-gradient(to right, #9333ea, #f97316); -webkit-background-clip: text; color: transparent;">La Guerre Économique entre la Chine et les États-Unis en 2025 : Une Analyse Approfondie</h2>
       
@@ -295,52 +296,52 @@ const STATIC_BLOG_POSTS: BlogPost[] = [
       <figcaption style="text-align: center; color: #6b7280; font-size: 0.9rem; margin-bottom: 1rem;">Les marchés financiers sous pression en 2025.</figcaption>
 
       <h3 style="font-weight: bold; font-size: 1.5rem; color: #1f2937; margin: 2rem 0 0.75rem;">Introduction</h3>
-      <p style="color: #4b5563; line-height: 1.5; margin-bottom: 1rem;">En 2025, la guerre économique entre la <em style="color: #7e22ce;">Chine</em> et les <em style="color: #7e22ce;">États-Unis</em> atteint un <strong style="color: #1f2937;">point critique</strong>. Ce qui a commencé comme des <u style="text-decoration-color: #f97316;">désaccords commerciaux</u> s’est transformé en une bataille de <strong style="color: #1f2937;">surtaxes</strong>, de <em style="color: #7e22ce;">restrictions technologiques</em> et de <u style="text-decoration-color: #f97316;">rivalités géopolitiques</u>. Les <strong style="color: #1f2937;">entrepreneurs</strong>, <em style="color: #7e22ce;">créateurs</em> et <em style="color: #7e22ce;">consommateurs</em> du monde entier ressentent les effets de cette lutte entre les <strong style="color: #1f2937;">deux plus grandes économies mondiales</strong>. Dans cet article, nous analysons les <em style="color: #7e22ce;">causes</em>, les <em style="color: #7e22ce;">conséquences</em> et les <u style="text-decoration-color: #f97316;">opportunités</u> de cette crise, avec un regard particulier sur les <strong style="color: #1f2937;">surtaxes</strong> et leur impact sur <em style="color: #7e22ce;">votre quotidien</em>.</p>
+      <p style="color: #4b5563; line-height: 1.5; margin-bottom: 1rem;">En 2025, la guerre économique entre la <em style="color: #7e22ce;">Chine</em> et les <em style="color: #7e22ce;">États-Unis</em> atteint un <strong style="color: #1f2937;">point critique</strong>. Ce qui a commencé comme des <u style="text-decoration-color: #a78bfa; text-decoration-thickness: 1px;">désaccords commerciaux</u> s’est transformé en une bataille de <strong style="color: #1f2937;">surtaxes</strong>, de <em style="color: #7e22ce;">restrictions technologiques</em> et de <u style="text-decoration-color: #a78bfa; text-decoration-thickness: 1px;">rivalités géopolitiques</u>. Les <strong style="color: #1f2937;">entrepreneurs</strong>, <em style="color: #7e22ce;">créateurs</em> et <em style="color: #7e22ce;">consommateurs</em> du monde entier ressentent les effets de cette lutte entre les <strong style="color: #1f2937;">deux plus grandes économies mondiales</strong>. Dans cet article, nous analysons les <em style="color: #7e22ce;">causes</em>, les <em style="color: #7e22ce;">conséquences</em> et les <u style="text-decoration-color: #a78bfa; text-decoration-thickness: 1px;">opportunités</u> de cette crise, avec un regard particulier sur les <strong style="color: #1f2937;">surtaxes</strong> et leur impact sur <em style="color: #7e22ce;">votre quotidien</em>.</p>
 
       <hr style="border: 0; height: 2px; background: linear-gradient(to right, #9333ea, #f97316); margin: 2rem 0;" />
 
       <h3 style="font-weight: bold; font-size: 1.5rem; color: #1f2937; margin: 2rem 0 0.75rem;">Les origines et l’escalade des tensions</h3>
-      <p style="color: #4b5563; line-height: 1.5; margin-bottom: 1rem;">Les tensions économiques entre les <em style="color: #7e22ce;">États-Unis</em> et la <em style="color: #7e22ce;">Chine</em> ne datent pas d’aujourd’hui. Depuis les années <u style="text-decoration-color: #f97316;">2000</u>, les États-Unis ont critiqué le <strong style="color: #1f2937;">déficit commercial</strong> avec la Chine, accusant Pékin de pratiques <em style="color: #7e22ce;">déloyales</em> comme la <strong style="color: #1f2937;">manipulation de sa monnaie</strong> ou les <u style="text-decoration-color: #f97316;">subventions massives</u> à ses industries. En <em style="color: #7e22ce;">2018</em>, sous l’administration <strong style="color: #1f2937;">Trump</strong>, des <strong style="color: #1f2937;">tarifs douaniers</strong> ont été imposés sur des produits chinois, marquant le début d’une <u style="text-decoration-color: #f97316;">guerre commerciale ouverte</u>.</p>
-      <p style="color: #4b5563; line-height: 1.5; margin-bottom: 1rem;">En <strong style="color: #1f2937;">2025</strong>, la situation s’est <strong style="color: #1f2937;">aggravée</strong>. Les États-Unis ont imposé des tarifs allant jusqu’à <strong style="color: #1f2937;">145 %</strong> sur les importations chinoises, tandis que la Chine a répondu avec des <u style="text-decoration-color: #f97316;">droits de douane de 125 %</u> sur les produits américains, touchant des secteurs comme l’<em style="color: #7e22ce;">agriculture</em> et l’<em style="color: #7e22ce;">automobile</em>. Ces mesures s’inscrivent dans une stratégie plus large : les États-Unis cherchent à <strong style="color: #1f2937;">réduire leur dépendance</strong> aux importations chinoises, tandis que la Chine renforce son <u style="text-decoration-color: #f97316;">autosuffisance technologique</u> et économique, notamment via des initiatives comme <em style="color: #7e22ce;">Made in China 2025</em>.</p>
+      <p style="color: #4b5563; line-height: 1.5; margin-bottom: 1rem;">Les tensions économiques entre les <em style="color: #7e22ce;">États-Unis</em> et la <em style="color: #7e22ce;">Chine</em> ne datent pas d’aujourd’hui. Depuis les années <u style="text-decoration-color: #a78bfa; text-decoration-thickness: 1px;">2000</u>, les États-Unis ont critiqué le <strong style="color: #1f2937;">déficit commercial</strong> avec la Chine, accusant Pékin de pratiques <em style="color: #7e22ce;">déloyales</em> comme la <strong style="color: #1f2937;">manipulation de sa monnaie</strong> ou les <u style="text-decoration-color: #a78bfa; text-decoration-thickness: 1px;">subventions massives</u> à ses industries. En <em style="color: #7e22ce;">2018</em>, sous l’administration <strong style="color: #1f2937;">Trump</strong>, des <strong style="color: #1f2937;">tarifs douaniers</strong> ont été imposés sur des produits chinois, marquant le début d’une <u style="text-decoration-color: #a78bfa; text-decoration-thickness: 1px;">guerre commerciale ouverte</u>.</p>
+      <p style="color: #4b5563; line-height: 1.5; margin-bottom: 1rem;">En <strong style="color: #1f2937;">2025</strong>, la situation s’est <strong style="color: #1f2937;">aggravée</strong>. Les États-Unis ont imposé des tarifs allant jusqu’à <strong style="color: #1f2937;">145 %</strong> sur les importations chinoises, tandis que la Chine a répondu avec des <u style="text-decoration-color: #a78bfa; text-decoration-thickness: 1px;">droits de douane de 125 %</u> sur les produits américains, touchant des secteurs comme l’<em style="color: #7e22ce;">agriculture</em> et l’<em style="color: #7e22ce;">automobile</em>. Ces mesures s’inscrivent dans une stratégie plus large : les États-Unis cherchent à <strong style="color: #1f2937;">réduire leur dépendance</strong> aux importations chinoises, tandis que la Chine renforce son <u style="text-decoration-color: #a78bfa; text-decoration-thickness: 1px;">autosuffisance technologique</u> et économique, notamment via des initiatives comme <em style="color: #7e22ce;">Made in China 2025</em>.</p>
 
       <h3 style="font-weight: bold; font-size: 1.5rem; color: #1f2937; margin: 2rem 0 0.75rem;">Les surtaxes en 2025 : une spirale sans fin ?</h3>
       <p style="color: #4b5563; line-height: 1.5; margin-bottom: 1rem;">Les surtaxes de <em style="color: #7e22ce;">2025</em> représentent une <strong style="color: #1f2937;">escalade sans précédent</strong>. Voici les faits marquants :</p>
       <ul style="list-style-type: disc; margin-left: 1.5rem; margin-bottom: 1rem; color: #4b5563;">
-        <li><strong style="color: #1f2937;">Février-mars 2025</strong> : Les États-Unis imposent des tarifs de <u style="text-decoration-color: #f97316;">10 %</u> sur la Chine, suivis d’une hausse à <u style="text-decoration-color: #f97316;">54 %</u> en avril, justifiée par des préoccupations sur le <em style="color: #7e22ce;">fentanyl</em> et des <em style="color: #7e22ce;">barrières commerciales</em> chinoises.</li>
-        <li><strong style="color: #1f2937;">Réponse chinoise</strong> : Pékin riposte avec des tarifs de <u style="text-decoration-color: #f97316;">15 %</u> sur les produits agricoles américains (<em style="color: #7e22ce;">blé</em>, <em style="color: #7e22ce;">maïs</em>, <em style="color: #7e22ce;">soja</em>) et de <u style="text-decoration-color: #f97316;">34 %</u> sur tous les biens américains à partir d’avril.</li>
+        <li><strong style="color: #1f2937;">Février-mars 2025</strong> : Les États-Unis imposent des tarifs de <u style="text-decoration-color: #a78bfa; text-decoration-thickness: 1px;">10 %</u> sur la Chine, suivis d’une hausse à <u style="text-decoration-color: #a78bfa; text-decoration-thickness: 1px;">54 %</u> en avril, justifiée par des préoccupations sur le <em style="color: #7e22ce;">fentanyl</em> et des <em style="color: #7e22ce;">barrières commerciales</em> chinoises.</li>
+        <li><strong style="color: #1f2937;">Réponse chinoise</strong> : Pékin riposte avec des tarifs de <u style="text-decoration-color: #a78bfa; text-decoration-thickness: 1px;">15 %</u> sur les produits agricoles américains (<em style="color: #7e22ce;">blé</em>, <em style="color: #7e22ce;">maïs</em>, <em style="color: #7e22ce;">soja</em>) et de <u style="text-decoration-color: #a78bfa; text-decoration-thickness: 1px;">34 %</u> sur tous les biens américains à partir d’avril.</li>
         <li><strong style="color: #1f2937;">Avril 2025</strong> : Les États-Unis portent les tarifs à <strong style="color: #1f2937;">145 %</strong>, tandis que la Chine atteint <strong style="color: #1f2937;">125 %</strong>, rendant le commerce bilatéral <em style="color: #7e22ce;">quasi impossible</em>.</li>
       </ul>
-      <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236aa?auto=format&fit=crop&q=80&w=600" alt="Conteneurs maritimes symbolisant le commerce mondial" style="max-width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);" />
+      <img src="https://images.unsplash.com/photo-1586527156312-5f48dd94839c?auto=format&fit=crop&q=80&w=600" alt="Conteneurs maritimes symbolisant le commerce mondial" style="max-width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);" />
       <figcaption style="text-align: center; color: #6b7280; font-size: 0.9rem; margin-bottom: 1rem;">Les surtaxes bouleversent les chaînes d’approvisionnement mondiales.</figcaption>
       <p style="color: #4b5563; line-height: 1.5; margin-bottom: 1rem;">Cette spirale a des <strong style="color: #1f2937;">conséquences immédiates</strong> :</p>
       <ul style="list-style-type: disc; margin-left: 1.5rem; margin-bottom: 1rem; color: #4b5563;">
-        <li><strong style="color: #1f2937;">Hausse des prix</strong> : Les consommateurs américains paient <u style="text-decoration-color: #f97316;">plus cher</u> pour les <em style="color: #7e22ce;">smartphones</em>, <em style="color: #7e22ce;">vêtements</em> et <em style="color: #7e22ce;">appareils électroniques</em>, dont <strong style="color: #1f2937;">73 %</strong> des importations viennent de Chine.</li>
-        <li><strong style="color: #1f2937;">Perturbations des chaînes d’approvisionnement</strong> : Les entreprises, des <em style="color: #7e22ce;">PME</em> aux <em style="color: #7e22ce;">multinationales</em>, peinent à trouver des <u style="text-decoration-color: #f97316;">alternatives</u> aux fournisseurs chinois.</li>
-        <li><strong style="color: #1f2937;">Marchés financiers</strong> : Les indices boursiers mondiaux <u style="text-decoration-color: #f97316;">chutent</u>, le <em style="color: #7e22ce;">Dow Jones</em> perdant <strong style="color: #1f2937;">2 200 points</strong> début avril à cause des <em style="color: #7e22ce;">incertitudes commerciales</em>.</li>
+        <li><strong style="color: #1f2937;">Hausse des prix</strong> : Les consommateurs américains paient <u style="text-decoration-color: #a78bfa; text-decoration-thickness: 1px;">plus cher</u> pour les <em style="color: #7e22ce;">smartphones</em>, <em style="color: #7e22ce;">vêtements</em> et <em style="color: #7e22ce;">appareils électroniques</em>, dont <strong style="color: #1f2937;">73 %</strong> des importations viennent de Chine.</li>
+        <li><strong style="color: #1f2937;">Perturbations des chaînes d’approvisionnement</strong> : Les entreprises, des <em style="color: #7e22ce;">PME</em> aux <em style="color: #7e22ce;">multinationales</em>, peinent à trouver des <u style="text-decoration-color: #a78bfa; text-decoration-thickness: 1px;">alternatives</u> aux fournisseurs chinois.</li>
+        <li><strong style="color: #1f2937;">Marchés financiers</strong> : Les indices boursiers mondiaux <u style="text-decoration-color: #a78bfa; text-decoration-thickness: 1px;">chutent</u>, le <em style="color: #7e22ce;">Dow Jones</em> perdant <strong style="color: #1f2937;">2 200 points</strong> début avril à cause des <em style="color: #7e22ce;">incertitudes commerciales</em>.</li>
       </ul>
-      <p style="color: #4b5563; line-height: 1.5; margin-bottom: 1rem;">Mais qui <strong style="color: #1f2937;">gagne</strong> dans cette guerre ? <em style="color: #7e22ce;">Aucun des deux camps</em> pour l’instant. Les États-Unis risquent une <strong style="color: #1f2937;">inflation galopante</strong>, tandis que la Chine fait face à une <u style="text-decoration-color: #f97316;">baisse des exportations</u> vers son deuxième marché. Cependant, la Chine semble <strong style="color: #1f2937;">mieux préparée</strong>, ayant <em style="color: #7e22ce;">diversifié</em> ses partenaires commerciaux (<em style="color: #7e22ce;">UE</em>, <em style="color: #7e22ce;">Asie du Sud-Est</em>) et réduit sa dépendance aux exportations vers les États-Unis (de <strong style="color: #1f2937;">19,2 %</strong> en 2018 à <strong style="color: #1f2937;">14,7 %</strong> en 2024).</p>
+      <p style="color: #4b5563; line-height: 1.5; margin-bottom: 1rem;">Mais qui <strong style="color: #1f2937;">gagne</strong> dans cette guerre ? <em style="color: #7e22ce;">Aucun des deux camps</em> pour l’instant. Les États-Unis risquent une <strong style="color: #1f2937;">inflation galopante</strong>, tandis que la Chine fait face à une <u style="text-decoration-color: #a78bfa; text-decoration-thickness: 1px;">baisse des exportations</u> vers son deuxième marché. Cependant, la Chine semble <strong style="color: #1f2937;">mieux préparée</strong>, ayant <em style="color: #7e22ce;">diversifié</em> ses partenaires commerciaux (<em style="color: #7e22ce;">UE</em>, <em style="color: #7e22ce;">Asie du Sud-Est</em>) et réduit sa dépendance aux exportations vers les États-Unis (de <strong style="color: #1f2937;">19,2 %</strong> en 2018 à <strong style="color: #1f2937;">14,7 %</strong> en 2024).</p>
 
       <hr style="border: 0; height: 2px; background: linear-gradient(to right, #9333ea, #f97316); margin: 2rem 0;" />
 
       <h3 style="font-weight: bold; font-size: 1.5rem; color: #1f2937; margin: 2rem 0 0.75rem;">Conséquences pour les entrepreneurs et consommateurs</h3>
       <p style="color: #4b5563; line-height: 1.5; margin-bottom: 1rem;">Cette guerre économique touche <strong style="color: #1f2937;">directement votre réalité</strong> :</p>
       <ul style="list-style-type: disc; margin-left: 1.5rem; margin-bottom: 1rem; color: #4b5563;">
-        <li><strong style="color: #1f2937;">Pour les entrepreneurs</strong> : Les coûts d’importation <u style="text-decoration-color: #f97316;">explosent</u>, obligeant à <strong style="color: #1f2937;">repenser les chaînes d’approvisionnement</strong>. Par exemple, un créateur de <em style="color: #7e22ce;">gadgets tech</em> pourrait voir ses marges <strong style="color: #1f2937;">s’effondrer</strong> à cause des tarifs sur les composants chinois. Cependant, cela ouvre des <u style="text-decoration-color: #f97316;">opportunités</u> : investir dans des fournisseurs <em style="color: #7e22ce;">locaux</em> ou <em style="color: #7e22ce;">asiatiques</em> (<em style="color: #7e22ce;">Vietnam</em>, <em style="color: #7e22ce;">Inde</em>) peut réduire les risques.</li>
-        <li><strong style="color: #1f2937;">Pour les consommateurs</strong> : Les prix des produits de tous les jours (<em style="color: #7e22ce;">électronique</em>, <em style="color: #7e22ce;">vêtements</em>, <em style="color: #7e22ce;">jouets</em>) <u style="text-decoration-color: #f97316;">augmentent</u>. En parallèle, les agriculteurs américains, touchés par les tarifs chinois sur le <em style="color: #7e22ce;">soja</em> et le <em style="color: #7e22ce;">maïs</em>, risquent de <strong style="color: #1f2937;">répercuter leurs pertes</strong> sur les prix alimentaires.</li>
-        <li><strong style="color: #1f2937;">Pour les créateurs</strong> : Les outils numériques, souvent fabriqués en Chine, deviennent <u style="text-decoration-color: #f97316;">plus chers</u>. Mais l’<em style="color: #7e22ce;">innovation locale</em> (par exemple, <em style="color: #7e22ce;">logiciels open-source</em> ou fabrication <em style="color: #7e22ce;">européenne</em>) peut devenir un <strong style="color: #1f2937;">atout compétitif</strong>.</li>
+        <li><strong style="color: #1f2937;">Pour les entrepreneurs</strong> : Les coûts d’importation <u style="text-decoration-color: #a78bfa; text-decoration-thickness: 1px;">explosent</u>, obligeant à <strong style="color: #1f2937;">repenser les chaînes d’approvisionnement</strong>. Par exemple, un créateur de <em style="color: #7e22ce;">gadgets tech</em> pourrait voir ses marges <strong style="color: #1f2937;">s’effondrer</strong> à cause des tarifs sur les composants chinois. Cependant, cela ouvre des <u style="text-decoration-color: #a78bfa; text-decoration-thickness: 1px;">opportunités</u> : investir dans des fournisseurs <em style="color: #7e22ce;">locaux</em> ou <em style="color: #7e22ce;">asiatiques</em> (<em style="color: #7e22ce;">Vietnam</em>, <em style="color: #7e22ce;">Inde</em>) peut réduire les risques.</li>
+        <li><strong style="color: #1f2937;">Pour les consommateurs</strong> : Les prix des produits de tous les jours (<em style="color: #7e22ce;">électronique</em>, <em style="color: #7e22ce;">vêtements</em>, <em style="color: #7e22ce;">jouets</em>) <u style="text-decoration-color: #a78bfa; text-decoration-thickness: 1px;">augmentent</u>. En parallèle, les agriculteurs américains, touchés par les tarifs chinois sur le <em style="color: #7e22ce;">soja</em> et le <em style="color: #7e22ce;">maïs</em>, risquent de <strong style="color: #1f2937;">répercuter leurs pertes</strong> sur les prix alimentaires.</li>
+        <li><strong style="color: #1f2937;">Pour les créateurs</strong> : Les outils numériques, souvent fabriqués en Chine, deviennent <u style="text-decoration-color: #a78bfa; text-decoration-thickness: 1px;">plus chers</u>. Mais l’<em style="color: #7e22ce;">innovation locale</em> (par exemple, <em style="color: #7e22ce;">logiciels open-source</em> ou fabrication <em style="color: #7e22ce;">européenne</em>) peut devenir un <strong style="color: #1f2937;">atout compétitif</strong>.</li>
       </ul>
-      <p style="color: #4b5563; line-height: 1.5; margin-bottom: 1rem;">Nos eBooks, comme <em style="color: #7e22ce;">Maîtriser l’IA pour Booster Votre Business en 2025</em>, peuvent vous aider à <strong style="color: #1f2937;">naviguer ces défis</strong> en adoptant des outils d’<u style="text-decoration-color: #f97316;">automatisation</u> pour réduire les coûts et rester <em style="color: #7e22ce;">compétitif</em>.</p>
+      <p style="color: #4b5563; line-height: 1.5; margin-bottom: 1rem;">Nos eBooks, comme <em style="color: #7e22ce;">Maîtriser l’IA pour Booster Votre Business en 2025</em>, peuvent vous aider à <strong style="color: #1f2937;">naviguer ces défis</strong> en adoptant des outils d’<u style="text-decoration-color: #a78bfa; text-decoration-thickness: 1px;">automatisation</u> pour réduire les coûts et rester <em style="color: #7e22ce;">compétitif</em>.</p>
 
       <h3 style="font-weight: bold; font-size: 1.5rem; color: #1f2937; margin: 2rem 0 0.75rem;">Perspectives et solutions possibles</h3>
       <p style="color: #4b5563; line-height: 1.5; margin-bottom: 1rem;">Cette guerre économique semble <em style="color: #7e22ce;">sans issue</em>, mais des <strong style="color: #1f2937;">solutions émergent</strong> :</p>
       <ul style="list-style-type: disc; margin-left: 1.5rem; margin-bottom: 1rem; color: #4b5563;">
-        <li><strong style="color: #1f2937;">Négociations</strong> : Malgré les tensions, des discussions entre <em style="color: #7e22ce;">Pékin</em> et <em style="color: #7e22ce;">Washington</em> pourraient reprendre si les deux parties réalisent les <u style="text-decoration-color: #f97316;">pertes mutuelles</u>. Un accord, même <em style="color: #7e22ce;">partiel</em>, sur des secteurs comme l’<em style="color: #7e22ce;">agriculture</em> ou la <em style="color: #7e22ce;">tech</em> pourrait désamorcer la crise.</li>
-        <li><strong style="color: #1f2937;">Diversification</strong> : La Chine renforce ses liens avec l’<em style="color: #7e22ce;">UE</em> et l’<em style="color: #7e22ce;">Asie</em>, tandis que les États-Unis investissent dans des alliances comme l’<em style="color: #7e22ce;">Indo-Pacifique</em>. Les entrepreneurs doivent suivre cette tendance : <u style="text-decoration-color: #f97316;">explorez des marchés alternatifs</u> pour vos produits ou services.</li>
-        <li><strong style="color: #1f2937;">Innovation</strong> : La course à l’<u style="text-decoration-color: #f97316;">autosuffisance technologique</u> (<em style="color: #7e22ce;">puces</em>, <em style="color: #7e22ce;">IA</em>) accélère. En <em style="color: #7e22ce;">2025</em>, investir dans des <strong style="color: #1f2937;">compétences tech locales</strong> ou des <em style="color: #7e22ce;">partenariats internationaux</em> peut faire la <strong style="color: #1f2937;">différence</strong>.</li>
+        <li><strong style="color: #1f2937;">Négociations</strong> : Malgré les tensions, des discussions entre <em style="color: #7e22ce;">Pékin</em> et <em style="color: #7e22ce;">Washington</em> pourraient reprendre si les deux parties réalisent les <u style="text-decoration-color: #a78bfa; text-decoration-thickness: 1px;">pertes mutuelles</u>. Un accord, même <em style="color: #7e22ce;">partiel</em>, sur des secteurs comme l’<em style="color: #7e22ce;">agriculture</em> ou la <em style="color: #7e22ce;">tech</em> pourrait désamorcer la crise.</li>
+        <li><strong style="color: #1f2937;">Diversification</strong> : La Chine renforce ses liens avec l’<em style="color: #7e22ce;">UE</em> et l’<em style="color: #7e22ce;">Asie</em>, tandis que les États-Unis investissent dans des alliances comme l’<em style="color: #7e22ce;">Indo-Pacifique</em>. Les entrepreneurs doivent suivre cette tendance : <u style="text-decoration-color: #a78bfa; text-decoration-thickness: 1px;">explorez des marchés alternatifs</u> pour vos produits ou services.</li>
+        <li><strong style="color: #1f2937;">Innovation</strong> : La course à l’<u style="text-decoration-color: #a78bfa; text-decoration-thickness: 1px;">autosuffisance technologique</u> (<em style="color: #7e22ce;">puces</em>, <em style="color: #7e22ce;">IA</em>) accélère. En <em style="color: #7e22ce;">2025</em>, investir dans des <strong style="color: #1f2937;">compétences tech locales</strong> ou des <em style="color: #7e22ce;">partenariats internationaux</em> peut faire la <strong style="color: #1f2937;">différence</strong>.</li>
       </ul>
       <img src="https://images.unsplash.com/photo-1567427017947-545c5f8d16ad?auto=format&fit=crop&q=80&w=600" alt="Tableau stratégique pour les solutions économiques" style="max-width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);" />
       <figcaption style="text-align: center; color: #6b7280; font-size: 0.9rem; margin-bottom: 1rem;">Planifier l’avenir dans un monde économiquement divisé.</figcaption>
-      <p style="color: #4b5563; line-height: 1.5; margin-bottom: 1rem;">Pour les <strong style="color: #1f2937;">entrepreneurs</strong>, <em style="color: #7e22ce;">2025</em> est un <strong style="color: #1f2937;">défi</strong> mais aussi une <u style="text-decoration-color: #f97316;">opportunité</u>. Adaptez-vous aux <em style="color: #7e22ce;">nouvelles réalités commerciales</em>, explorez des <em style="color: #7e22ce;">niches</em> moins affectées par les tarifs, et utilisez des <strong style="color: #1f2937;">outils numériques</strong> pour optimiser vos opérations.</p>
+      <p style="color: #4b5563; line-height: 1.5; margin-bottom: 1rem;">Pour les <strong style="color: #1f2937;">entrepreneurs</strong>, <em style="color: #7e22ce;">2025</em> est un <strong style="color: #1f2937;">défi</strong> mais aussi une <u style="text-decoration-color: #a78bfa; text-decoration-thickness: 1px;">opportunité</u>. Adaptez-vous aux <em style="color: #7e22ce;">nouvelles réalités commerciales</em>, explorez des <em style="color: #7e22ce;">niches</em> moins affectées par les tarifs, et utilisez des <strong style="color: #1f2937;">outils numériques</strong> pour optimiser vos opérations.</p>
 
       <hr style="border: 0; height: 2px; background: linear-gradient(to right, #9333ea, #f97316); margin: 2rem 0;" />
 
@@ -348,7 +349,7 @@ const STATIC_BLOG_POSTS: BlogPost[] = [
       <blockquote style="background: #f9fafb; border-left: 4px solid #9333ea; padding: 1rem; margin: 1rem 0; font-style: italic; color: #4b5563;">
         La guerre économique redessine le paysage mondial, mais les opportunités naissent dans l’adaptation.
       </blockquote>
-      <p style="color: #4b5563; line-height: 1.5; margin-bottom: 1rem;">La guerre économique entre la <em style="color: #7e22ce;">Chine</em> et les <em style="color: #7e22ce;">États-Unis</em> en <strong style="color: #1f2937;">2025</strong> redessine le <u style="text-decoration-color: #f97316;">paysage mondial</u>. Les surtaxes massives, bien qu’<em style="color: #7e22ce;">impressionnantes</em>, ne profitent ni à <em style="color: #7e22ce;">Pékin</em> ni à <em style="color: #7e22ce;">Washington</em> à long terme. En tant qu’<em style="color: #7e22ce;">entrepreneur</em> ou <em style="color: #7e22ce;">créateur</em>, votre <strong style="color: #1f2937;">résilience</strong> passe par l’<u style="text-decoration-color: #f97316;">adaptation</u> : <strong style="color: #1f2937;">diversifiez vos sources</strong>, <em style="color: #7e22ce;">innovez</em>, et <strong style="color: #1f2937;">restez informé</strong>. <em style="color: #7e22ce;">Que pensez-vous de cette crise ?</em> Partagez vos idées en commentaire ! Et pour aller plus loin, découvrez nos <em style="color: #7e22ce;">eBooks</em> pour transformer ces défis en <strong style="color: #1f2937;">opportunités</strong>.</p>
+      <p style="color: #4b5563; line-height: 1.5; margin-bottom: 1rem;">La guerre économique entre la <em style="color: #7e22ce;">Chine</em> et les <em style="color: #7e22ce;">États-Unis</em> en <strong style="color: #1f2937;">2025</strong> redessine le <u style="text-decoration-color: #a78bfa; text-decoration-thickness: 1px;">paysage mondial</u>. Les surtaxes massives, bien qu’<em style="color: #7e22ce;">impressionnantes</em>, ne profitent ni à <em style="color: #7e22ce;">Pékin</em> ni à <em style="color: #7e22ce;">Washington</em> à long terme. En tant qu’<em style="color: #7e22ce;">entrepreneur</em> ou <em style="color: #7e22ce;">créateur</em>, votre <strong style="color: #1f2937;">résilience</strong> passe par l’<u style="text-decoration-color: #a78bfa; text-decoration-thickness: 1px;">adaptation</u> : <strong style="color: #1f2937;">diversifiez vos sources</strong>, <em style="color: #7e22ce;">innovez</em>, et <strong style="color: #1f2937;">restez informé</strong>. <em style="color: #7e22ce;">Que pensez-vous de cette crise ?</em> Partagez vos idées en commentaire ! Et pour aller plus loin, découvrez nos <em style="color: #7e22ce;">eBooks</em> pour transformer ces défis en <strong style="color: #1f2937;">opportunités</strong>.</p>
     `
   }
 ];
