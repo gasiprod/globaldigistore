@@ -88,6 +88,36 @@ const STATIC_PRODUCTS: Product[] = [
     }
   },
   {
+    title: "Léo et la Malle aux Métiers",
+    description: "Une BD pour enfants : suivez Léo dans une aventure magique pour découvrir les métiers !",
+    image: "/assets/leo-malle-metiers-cover.png",
+    price: 9,
+    format: "PDF,PNG",
+    category: "ebooks",
+    languages: ["Français", "Anglais"],
+    preview: {
+      description: "Rejoignez Léo, un garçon curieux, dans une aventure enchantée où il explore les métiers du monde ! Grâce à une malle magique, Léo devient pompier, médecin, cuisinier, artiste, détective, astronaute… Chaque page déborde de couleurs, d’humour et de leçons inspirantes pour des enfants.",
+      chapters: [
+        "La Malle Magique : Une découverte extraordinaire",
+        "Pompier : Léo éteint les flammes !",
+        "Médecin : Léo soigne avec cœur",
+        "Cuisinier : Un gratin arc-en-ciel",
+        "Ouvrier : Léo construit une cabane",
+        "Artiste : Un tableau plein de rêves",
+        "Détective : Léo résout un mystère",
+        "Astronaute : Léo explore les étoiles",
+        "Le Message du Carnet : Choisis ton métier avec ton cœur",
+        "Léo Rêve Grand : Une fin lumineuse"
+      ],
+      sample: "Imaginez votre enfant rêver d’être pompier, astronaute ou cuisinier ! Avec Léo et sa malle magique, chaque métier devient une aventure palpitante, pleine de courage et de créativité. Parfait pour inspirer vos enfants !",
+      images: [
+        "/assets/leo-malle-metiers-cover-1.png",
+        "/assets/leo-malle-metiers-cover-2.png",
+        "/assets/leo-malle-metiers-cover-3.png",
+      ]
+    }
+  },
+  {
     title: "7 jours hors écran",
     description: "Déconnectez-vous des écrans en 7 jours et retrouvez focus et sérénité. Guide simple et motivant.",
     image: "/assets/7j-hors-ecran-prnpcl.png",
